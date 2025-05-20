@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <!-- Tailwind CSS -->
+    <link href="./src/output.css" rel="stylesheet" />
+
+    <title>Responsive Navbar</title>
+
+    <style>
+      * {
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        overflow-x: hidden;
+      }
+
+      .overflow-x-auto::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body class="bg-[#f6f5f5]">
+    <header class="w-full mb-1">
+      <nav class="bg-white w-full shadow-lg">
+        <div
+          class="max-w-[1200px] mx-auto px-4 flex items-center justify-between h-[70px]"
+        >
+          <!-- Logo (always left) -->
+          <div class="logo flex-shrink-0 mr-4">
+            <img src="./img/logo.png" class="h-[40px] w-[250px]" alt="Logo" />
+          </div>
+
+          <!-- Toggle Button (Mobile Only) -->
+          <div
+            id="toggle-btn"
+            class="md:hidden text-2xl text-gray-600 cursor-pointer mr-2"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </div>
+
+          <!-- Nav + Buttons -->
+          <div
+            id="mobile-menu"
+            class="hidden md:flex flex-row items-center gap-6"
+            style="min-width: 300px"
+          >
+            <ul class="flex gap-8 text-gray-500 text-[12px]">
+              <li><a href="#" class="hover:text-gray-700">Products</a></li>
+              <li><a href="#" class="hover:text-gray-700">Pricing</a></li>
+              <li><a href="#" class="hover:text-gray-700">Community</a></li>
+              <li><a href="#" class="hover:text-gray-700">Media</a></li>
+              <li><a href="#" class="hover:text-gray-700">Support</a></li>
+            </ul>
+
+            <div class="flex gap-6 items-center">
+              <a href="#" class="text-gray-500 hover:text-gray-700 text-[12px]"
+                >Sign In</a
+              >
+              <a
+                href="#"
+                class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition text-[12px] whitespace-nowrap"
+              >
+                Sign Up Now
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="px-6 md:px-10 py-10 max-w-screen-xl mx-auto mb-10">
+      <!-- Breadcrumb -->
+      <div class="mb-2 text-sm text-blue-600 space-x-1">
+        <a href="#" class="hover:underline">Bluestock</a>
+        <span>&gt;</span>
+        <a href="#" class="hover:underline">IPO</a>
+        <span>&gt;</span>
+        <a href="#" class="text-gray-800">UPCOMING IPO</a>
+      </div>
+
+      <!-- Heading -->
+      <div class="mb-3">
+        <h1 class="text-xl md:text-2xl font-bold mb-0.5">Upcoming IPO</h1>
+        <p class="text-sm md:text-base text-gray-700">
+          Companies that have filed for an IPO with SEBI. Few details might be
+          disclosed by the companies later.
+        </p>
+      </div>
+
+      <!-- Card Grid -->
+      <div
+        class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+      >
+        <!-- CARD -->
+        <div class="bg-white rounded-lg p-4 shadow">
+          <div class="flex flex-col sm:flex-row sm:items-center">
+            <img
+              src="./img/24e25de8b303b6ac52168faea60505f339e99540.png"
+              alt="Nova Agritech"
+              class="w-[110px] h-auto mx-auto sm:mx-0"
+            />
+            <h2
+              class="text-blue-500 text-sm font-semibold mt-3 sm:mt-0 sm:ml-6 text-center sm:text-left"
+            >
+              Nova Agritech Ltd.
+            </h2>
+          </div>
+
+          <!-- Info Grid -->
+          <div class="grid grid-cols-2 gap-y-2 text-[12px] text-gray-600 mt-4">
+            <span>PRICE BAND</span>
+            <span class="text-[14px] text-gray-700 font-bold">₹41 - ₹44</span>
+
+            <span>OPEN</span>
+            <span class="text-[14px] text-gray-700 font-bold">2024-01-22</span>
+
+            <span>CLOSE</span>
+            <span class="text-[14px] text-gray-700 font-bold">2024-01-24</span>
+
+            <span>ISSUE SIZE</span>
+            <span class="text-[14px] text-gray-700 font-bold">143.81cr</span>
+
+            <span>ISSUE TYPE</span>
+            <span class="text-[14px] text-gray-700 font-bold">Book Built</span>
+
+            <span>LISTING DATE</span>
+            <span class="text-[14px] text-gray-700 font-bold">2024-01-30</span>
+          </div>
+
+          <!-- Buttons -->
+          <div class="mt-6 flex gap-3 justify-start text-[14px]">
+            <button
+              class="bg-white border border-blue-600 text-blue-600 px-3 py-1 rounded-md"
+            >
+              RHP
+            </button>
+            <button class="bg-orange-600 text-white px-3 py-1 rounded-md">
+              DRHP
+            </button>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg p-4 shadow">
+          <div class="flex flex-col sm:flex-row sm:items-center">
+            <img
+              src="./img/24e25de8b303b6ac52168faea60505f339e99540.png"
+              alt="Nova Agritech"
+              class="w-[110px] h-auto mx-auto sm:mx-0"
+            />
+            <h2
+              class="text-blue-500 text-sm font-semibold mt-3 sm:mt-0 sm:ml-6 text-center sm:text-left"
+            >
+              Nova Agritech Ltd.
+            </h2>
+          </div>
+
+          <!-- Info Grid -->
+          <div class="grid grid-cols-2 gap-y-2 text-[12px] text-gray-600 mt-4">
+            <span>PRICE BAND</span>
+            <span class="text-[14px] text-gray-700 font-bold">₹41 - ₹44</span>
+
+            <span>OPEN</span>
+            <span class="text-[14px] text-gray-700 font-bold">2024-01-22</span>
+
+            <span>CLOSE</span>
+            <span class="text-[14px] text-gray-700 font-bold">2024-01-24</span>
+
+            <span>ISSUE SIZE</span>
+            <span class="text-[14px] text-gray-700 font-bold">143.81cr</span>
+
+            <span>ISSUE TYPE</span>
+            <span class="text-[14px] text-gray-700 font-bold">Book Built</span>
+
+            <span>LISTING DATE</span>
+            <span class="text-[14px] text-gray-700 font-bold">2024-01-30</span>
+          </div>
+
+          <!-- Buttons -->
+          <div class="mt-6 flex gap-3 justify-start text-[14px]">
+            <button
+              class="bg-white border border-blue-600 text-blue-600 px-3 py-1 rounded-md"
+            >
+              RHP
+            </button>
+            <button class="bg-orange-600 text-white px-3 py-1 rounded-md">
+              DRHP
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg p-4 shadow">
+          <div class="flex flex-col sm:flex-row sm:items-center">
+            <img
+              src="./img/24e25de8b303b6ac52168faea60505f339e99540.png"
+              alt="Nova Agritech"
+              class="w-[110px] h-auto mx-auto sm:mx-0"
+            />
+            <h2
+              class="text-blue-500 text-sm font-semibold mt-3 sm:mt-0 sm:ml-6 text-center sm:text-left"
+            >
+              Nova Agritech Ltd.
+            </h2>
+          </div>
+
+          <!-- Info Grid -->
+          <div class="grid grid-cols-2 gap-y-2 text-[12px] text-gray-600 mt-4">
+            <span>PRICE BAND</span>
+            <span class="text-[14px] text-gray-700 font-bold">₹41 - ₹44</span>
+
+            <span>OPEN</span>
+            <span class="text-[14px] text-gray-700 font-bold">2024-01-22</span>
+
+            <span>CLOSE</span>
+            <span class="text-[14px] text-gray-700 font-bold">2024-01-24</span>
+
+            <span>ISSUE SIZE</span>
+            <span class="text-[14px] text-gray-700 font-bold">143.81cr</span>
+
+            <span>ISSUE TYPE</span>
+            <span class="text-[14px] text-gray-700 font-bold">Book Built</span>
+
+            <span>LISTING DATE</span>
+            <span class="text-[14px] text-gray-700 font-bold">2024-01-30</span>
+          </div>
+
+          <!-- Buttons -->
+          <div class="mt-6 flex gap-3 justify-start text-[14px]">
+            <button
+              class="bg-white border border-blue-600 text-blue-600 px-3 py-1 rounded-md"
+            >
+              RHP
+            </button>
+            <button class="bg-orange-600 text-white px-3 py-1 rounded-md">
+              DRHP
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16 space-y-6 px-6 md:px-10 max-w-screen-xl mx-auto">
+        <div>
+          <h1 class="text-2xl font-bold text-black">
+            Frequently Asked Question?
+          </h1>
+          <p class="text-gray-700">
+            Find answers to common questions that come in your mind related to
+            IPO.
+          </p>
+        </div>
+
+        <!-- Accordions -->
+        <div class="w-full space-y-4">
+          <!-- Accordion 1 -->
+          <div
+            x-data="{ open: false }"
+            class="w-full bg-white rounded-xl shadow-md border border-gray-200"
+          >
+            <div
+              class="flex justify-between items-center px-5 py-4 cursor-pointer"
+              @click="open = !open"
+            >
+              <p class="font-bold text-[20px]">How to Subscribe to an IPO?</p>
+              <span
+                class="text-2xl font-bold text-gray-600 transition-transform duration-200"
+              >
+                <span class="text-blue-600" x-text="open ? '−' : '+'"></span>
+              </span>
+            </div>
+            <div x-show="open" x-collapse class="px-10 pb-6">
+              <ul class="list-disc space-y-2">
+                <li class="font-bold">
+                  Step 1: Login to your respective service provider.
+                </li>
+                <li class="font-bold">Step 2: Click on the IPO button</li>
+                <li class="font-bold">
+                  Step 3: Select the IPO and enter the details
+                </li>
+                <li class="font-bold">
+                  Step 4: Make payment or authorize mandate
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Accordion 2 -->
+          <div
+            x-data="{ open: false }"
+            class="w-full bg-white rounded-xl shadow-md border border-gray-200"
+          >
+            <div
+              class="flex justify-between items-center px-5 py-4 cursor-pointer"
+              @click="open = !open"
+            >
+              <p class="font-bold text-[20px]">
+                Should I buy an IPO first day?
+              </p>
+              <span
+                class="text-2xl font-bold text-gray-600 transition-transform duration-200"
+              >
+                <span class="text-blue-600" x-text="open ? '−' : '+'"></span>
+              </span>
+            </div>
+            <div x-show="open" x-collapse class="px-10 pb-6">
+              <ul class="list-disc space-y-2">
+                <li class="font-bold">
+                  If oversubscribed, IPOs often list at a premium.
+                </li>
+                <li class="font-bold">
+                  IPOs from known, profitable brands perform well.
+                </li>
+                <li class="font-bold">
+                  Always read the DRHP and understand the risks.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="w-full bg-white py-10 px-6 md:px-10 min-h-screen">
+      <div class="max-w-screen-xl mx-auto mb-10">
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-10">
+          <!-- Resources -->
+          <div
+            class="flex-1 min-w-[160px] md:min-w-[220px] flex flex-col space-y-4 md:space-y-6"
+          >
+            <span
+              class="font-bold text-lg md:text-xl text-black mb-2 md:mb-4 block"
+              >Resources</span
+            >
+            <ul
+              class="space-y-1 md:space-y-2 text-gray-500 text-sm md:text-base"
+            >
+              <li>
+                <a href="#" class="hover:text-black transition">Trading View</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-black transition">NSE Holidays</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-black transition"
+                  >e-Voting CDSL</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-black transition"
+                  >e-Voting NSDL</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-black transition"
+                  >Market Timing</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Company -->
+          <div class="flex-1 min-w-[160px] md:min-w-[180px]">
+            <span
+              class="font-bold text-lg md:text-xl text-black mb-2 md:mb-4 block"
+              >Company</span
+            >
+            <ul
+              class="space-y-1 md:space-y-2 text-gray-500 text-sm md:text-base"
+            >
+              <li>
+                <a href="#" class="hover:text-black transition">Careers</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-black transition">Contact Us</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-black transition">About Us</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-black transition">Community</a>
+              </li>
+              <li><a href="#" class="hover:text-black transition">Blogs</a></li>
+            </ul>
+          </div>
+
+          <!-- Offerings -->
+          <div class="flex-1 min-w-[160px] md:min-w-[180px]">
+            <span
+              class="font-bold text-lg md:text-xl text-black mb-2 md:mb-4 block"
+              >Offerings</span
+            >
+            <ul
+              class="space-y-1 md:space-y-2 text-gray-500 text-sm md:text-base"
+            >
+              <li>
+                <a href="#" class="hover:text-black transition"
+                  >Compare Broker</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-black transition"
+                  >Fin Calculators</a
+                >
+              </li>
+              <li><a href="#" class="hover:text-black transition">IPO</a></li>
+              <li>
+                <a href="#" class="hover:text-black transition">All Brokers</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-black transition">Products</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Links -->
+          <div class="flex-1 min-w-[160px] md:min-w-[180px]">
+            <span
+              class="font-bold text-lg md:text-xl text-black mb-2 md:mb-4 block"
+              >Links</span
+            >
+            <ul
+              class="space-y-1 md:space-y-2 text-gray-500 text-sm md:text-base"
+            >
+              <li>
+                <a href="#" class="hover:text-black transition"
+                  >Shark Investors</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-black transition">Mutual Funds</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-black transition">Sitemap</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-black transition"
+                  >Indian Indices</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-black transition"
+                  >Bug Bounty Program</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Policy -->
+          <div class="flex-1 min-w-[160px] md:min-w-[180px]">
+            <span
+              class="font-bold text-lg md:text-xl text-black mb-2 md:mb-4 block"
+              >Policy</span
+            >
+            <ul
+              class="space-y-1 md:space-y-2 text-gray-500 text-sm md:text-base"
+            >
+              <li>
+                <a href="#" class="hover:text-black transition"
+                  >Terms & Conditions</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-black transition"
+                  >Privacy Policy</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-black transition"
+                  >Refund Policy</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-black transition">Disclaimer</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-black transition"
+                  >Trust & Security</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-10 flex flex-col items-start space-y-4">
+          <div class="flex flex-wrap gap-4">
+            <a
+              href="#"
+              class="text-blue-700 text-2xl hover:text-blue-900 transition"
+            >
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+            <a
+              href="#"
+              class="text-blue-700 text-2xl hover:text-blue-900 transition"
+            >
+              <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a
+              href="#"
+              class="text-blue-700 text-2xl hover:text-blue-900 transition"
+            >
+              <i class="fa-brands fa-youtube"></i>
+            </a>
+            <a
+              href="#"
+              class="text-blue-700 text-2xl hover:text-blue-900 transition"
+            >
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+            <a
+              href="#"
+              class="text-blue-700 text-2xl hover:text-blue-900 transition"
+            >
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a
+              href="#"
+              class="text-blue-700 text-2xl hover:text-blue-900 transition"
+            >
+              <i class="fa-brands fa-telegram"></i>
+            </a>
+          </div>
+          <div>
+            <img
+              src="./img/logo.png"
+              alt="Logo"
+              class="w-[220px] max-w-full h-[40px] object-contain"
+            />
+          </div>
+          <div class="flex flex-col text-gray-500 mb-4">
+            <span>Bluestock Fintech Pune,</span>
+            <span>Maharashtra</span>
+          </div>
+          <div class="flex flex-col text-gray-500 mb-4">
+            <span>MSME Registration No: </span>
+            <span>UDYAM-MH-01-v0138001 </span>
+          </div>
+          <div class="w-[253px] max-w-full h-[63px]">
+            <img
+              src="./img/Screenshot 2025-05-21 005936.png"
+              alt=""
+              class="object-contain"
+            />
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JS for Toggle -->
+    <script>
+      const toggleBtn = document.getElementById("toggle-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      toggleBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+    </script>
+  </body>
+</html>
