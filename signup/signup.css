@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+body {
+      display: flex;
+      justify-content: center; /* horizontal center */
+      align-items: center;     /* vertical center */
+      min-height: 100vh;       /* full viewport height */
+    }
+
+#frame40591{
+    width: 400px;
+    height: 828px;
+    position: absolute;
+    top: 66px;
+}
+#frame40590{
+    width: 400px;
+    height: 764px;
+    align-items: flex-start;
+    position: relative;
+}
+#frame40589{
+    height: 36px;
+    width:222px;
+    position:relative;
+    align-self: center;
+    top: 0;               /* top of parent */
+}
+#createacc{
+    height: 28px;
+    width: 342px;
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 0;
+    text-align: center;
+    align-self: center;
+}
+#input-section{
+    height: 628px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+#email{
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0;
+}
+#custom-input{
+    width: 400px;
+    height: 48px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+#password1{
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0;
+}
+#right{
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    height: 16px;
+    width: 162px;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0;
+    justify-content: right;
+    text-align: right;
+    transition: all 300ms ease-out;
+    color: #6385ff;
+    cursor: pointer;
+}
+#right:hover {
+    transform: scale(1.02);
+}
+#robot{
+    position:relative;
+    left: 12%;
+    height: 68px;
+}
+#terms{
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+}
+#txt{
+    font-family: "Inter", sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    text-decoration: none;
+}
+#logbtn{
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0;
+    text-align: center;
+    cursor: pointer;
+}
+#devider
+{
+    position:relative;
+    left: 34%;
+}
+#signinwith{
+    z-index: 400;
+    background: #f4f5f7;
+    opacity: 1.00;
+    text-align: center;
+    position: relative;
+    top: 0%;
+}
+#btn1{
+    height: 48px;
+    width: 400px;
+    padding: 12px 69px;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0;
+    text-align: center;
+    background-color: #e4e7eb;
+}
+#createAnAccount{
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    height: 24px;
+    text-decoration: none;
+    width: 400px;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0;
+    transition: all 300ms ease-out;
+    color: #3f52ff;
+    cursor: pointer;
+}
+#createAnAccount:hover {
+    transform: scale(1.02); /* Slight zoom on hover */
+}
