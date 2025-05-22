@@ -1,0 +1,292 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>IPO Details</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link href="reg_ipo_details.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <div class="logo-circle">BF</div>
+        <span class="brand-name">Bluestock Fintech</span>
+        <div class="search-wrapper">
+          <input
+            class="search-input"
+            placeholder="Search"
+            type="search"
+            aria-label="Search"
+          />
+          <i class="fas fa-search search-icon"></i>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="user-info">
+          <div class="user-circle">V</div>
+          <span>Hi, Hemanth</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="notification">
+          <i class="far fa-bell"></i>
+          <span class="notification-badge"></span>
+        </div>
+      </div>
+    </header>
+
+    <div class="content-wrapper">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-section-title">Menu</div>
+        <nav class="sidebar-menu">
+          <button class="sidebar-btn disabled" disabled>
+            <i class="fas fa-th-large"></i>
+            <span>Dashboard</span>
+          </button>
+          <button class="sidebar-btn active">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Manage IPO</span>
+          </button>
+          <button class="sidebar-btn disabled" disabled>
+            <i class="fas fa-file-alt"></i>
+            <span>IPO Subscription</span>
+          </button>
+          <button class="sidebar-btn disabled" disabled>
+            <i class="fas fa-file-invoice"></i>
+            <span>IPO Allotment</span>
+          </button>
+        </nav>
+        <div class="sidebar-section-title">Others</div>
+        <nav class="sidebar-menu">
+          <button class="sidebar-btn disabled" disabled>
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+          </button>
+          <button class="sidebar-btn disabled" disabled>
+            <i class="fas fa-network-wired"></i>
+            <span>API Manager</span>
+          </button>
+          <button class="sidebar-btn disabled" disabled>
+            <i class="fas fa-user"></i>
+            <span>Accounts</span>
+          </button>
+          <button class="sidebar-btn disabled" disabled>
+            <i class="fas fa-question-circle"></i>
+            <span>Help</span>
+          </button>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="main-header">
+          <div>
+            <h1 class="main-title">Upcomming IPO Information</h1>
+            <p class="main-subtitle">Manage your IPO Details</p>
+          </div>
+          <div class="main-actions">
+            <button class="btn-primary">Register</button>
+            <button class="btn-outline">Cancel</button>
+          </div>
+        </div>
+
+        <div class="main-body">
+          <!-- Left tabs -->
+          <div class="tabs-left">
+            <button class="tab active">
+              <i class="fas fa-info-circle"></i>
+              <span>IPO Information</span>
+            </button>
+            <button class="tab">
+              <i class="far fa-file-alt"></i>
+              <span>IPO Info</span>
+            </button>
+          </div>
+
+          <!-- Right content -->
+          <section class="tab-content">
+            <h2 class="section-title">IPO Information</h2>
+            <p class="section-subtitle">Enter IPO Details</p>
+            <hr />
+
+            <div class="company-logo-row">
+              <img
+                src="./nse.png"
+                alt="Company logo with red, orange, and yellow polygon shapes"
+                class="company-logo"
+                width="48"
+                height="48"
+              />
+              <div class="company-info">
+                <p class="company-name">NSE India</p>
+                <p class="company-role">Tech Lead</p>
+                <p class="company-location">Pune</p>
+              </div>
+              <button class="btn-primary btn-sm ml-6">Upload Logo</button>
+              <button class="btn-outline btn-sm">Delete</button>
+            </div>
+
+            <form class="form-grid">
+              <div>
+                <label for="companyName">Company Name</label>
+                <input
+                  id="companyName"
+                  type="text"
+                  placeholder="Vodafone Idea"
+                  class="input-field"
+                />
+              </div>
+              <div>
+                <label for="priceBand">Price Band</label>
+                <input
+                  id="priceBand"
+                  type="text"
+                  placeholder="Not Issued"
+                  class="input-field"
+                />
+              </div>
+              <div>
+                <label for="open">Open</label>
+                <input
+                  id="open"
+                  type="text"
+                  placeholder="Not Issued"
+                  class="input-field"
+                />
+              </div>
+              <div>
+                <label for="close">Close</label>
+                <input
+                  id="close"
+                  type="text"
+                  placeholder="Not Issued"
+                  class="input-field"
+                />
+              </div>
+              <div>
+                <label for="issueSize">Issue Size</label>
+                <input
+                  id="issueSize"
+                  type="text"
+                  placeholder="2300 Cr."
+                  class="input-field"
+                />
+              </div>
+              <div>
+                <label for="issueType">Issue Type</label>
+                <select id="issueType" class="input-field select-field">
+                  <option disabled selected></option>
+                </select>
+              </div>
+              <div>
+                <label for="listingDate">LISTING DATE</label>
+                <input
+                  id="listingDate"
+                  type="text"
+                  placeholder="Not Issued"
+                  class="input-field"
+                />
+              </div>
+              <div>
+                <label for="status">Status</label>
+                <select id="status" class="input-field select-field">
+                  <option disabled selected></option>
+                </select>
+              </div>
+            </form>
+
+            <h3 class="section-subtitle-bold">
+              NEW LISTED IPO DETAILS (WHEN IPO GET LISTED)
+            </h3>
+
+            <form class="form-grid">
+              <div>
+                <label for="ipoPrice">IPO PRICE</label>
+                <input
+                  id="ipoPrice"
+                  type="text"
+                  placeholder="₹ 383"
+                  class="input-field"
+                />
+              </div>
+              <div>
+                <label for="listingPrice">LISTING PRICE</label>
+                <input
+                  id="listingPrice"
+                  type="text"
+                  placeholder="₹ 435"
+                  class="input-field"
+                />
+              </div>
+              <div>
+                <label for="listingGain">LISTING GAIN</label>
+                <input
+                  id="listingGain"
+                  type="text"
+                  placeholder="13.58 %"
+                  class="input-field"
+                />
+              </div>
+              <div>
+                <label for="listingDateNew">LISTING DATE</label>
+                <input
+                  id="listingDateNew"
+                  type="text"
+                  placeholder="2024-05-30"
+                  class="input-field"
+                />
+              </div>
+              <div>
+                <label for="cmp">CMP</label>
+                <input
+                  id="cmp"
+                  type="text"
+                  placeholder="₹410"
+                  class="input-field"
+                />
+              </div>
+              <div>
+                <label for="currentReturn">CURRENT RETURN</label>
+                <input
+                  id="currentReturn"
+                  type="text"
+                  placeholder="7.05 %"
+                  class="input-field"
+                />
+              </div>
+              <div>
+                <label for="rhp">RHP</label>
+                <input
+                  id="rhp"
+                  type="text"
+                  placeholder="Enter RHP PDF Link"
+                  class="input-field"
+                />
+              </div>
+              <div>
+                <label for="drhp">DRHP</label>
+                <input
+                  id="drhp"
+                  type="text"
+                  placeholder="Enter DRHP PDF Link"
+                  class="input-field"
+                />
+              </div>
+            </form>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
