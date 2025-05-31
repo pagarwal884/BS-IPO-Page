@@ -5,43 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bluestock IPO Application</title>
     <link rel="stylesheet" href="home.css">
-    <script src="home.js"></script>
+    
 </head>
 <body>
+
     <header class="header">
         <div class="logo-section">
-            <img src="bluestock.jpg" alt="Bluestock Logo" class="logo">
-            <span class="site-name">BLUESTOCK</span>
+            <img src="bluestock.jpg" alt="Bluestock Logo" class="logo" />
+            <span class="site-name">Bluestock</span>
         </div>
-        <nav class="nav">
-            <ul class="menu">
-                <li><a href="#">IPO</a></li>
-                <li><a href="#">COMMUNITY</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle">PRODUCTS <span class="arr">▼<!--&#9662;--></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Product 1</a></li>
-                        <li><a href="#">Product 2</a></li>
-                        <li><a href="#">Product 3</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">BROKERS <span class="arrow-up">↗</span></a></li>
-                <li><a href="#">LIVE NEWS <span class="new-badge">NEW</span></a></li>
+
+        <nav class="nav desktop-nav">
+            <ul>
+            <li><a href="#">IPO</a></li>
+            <li><a href="#">Products <span class="arr">&#9662;</span></a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">BROKERS <span class="arrow-up">↗</span></a></li>
+            <li><a href="#">LIVE NEWS <span class="new-badge">NEW</span></a></li>
             </ul>
         </nav>
+
         <div class="auth-section">
             <a href="#" class="sign-in">Sign In</a>
             <a href="#" class="sign-up">Sign Up Now</a>
+            <div class="menu-icon" id="mobile-menu-toggle">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            </div>
+            
         </div>
-        <div class="menu-icon">
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
+
+
+        <div class="search-wrapper">
+            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="black" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input type="text" class="search-input" placeholder="Search...">
         </div>
+
+        <div class="mobile-menu">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="mobile-nav">
+                <ul>
+                    <li><a href="#">IPO</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">News</a></li>
+                    <li><a href="#">Analysis</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="/signup.html">Sign Up</a></li>
+                    <li><a href="/signin.html">Sign In</a></li>
+                </ul>
+            </div>
+        </div>
+
     </header>
+
+    <div class="breadcrumb" style="padding: 10px 20px; font-size: 14px; color: #555; background-color: #f4f4f4;">
+        Bluestock &gt; IPO
+    </div>
+
+
+    <!-- Mobile menu -->
+    <div class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="#">IPO</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Analysis</a></li>
+            <li><a href="#">FAQ</a></li>
+        </ul>
+    </div>
+
+
     <main class="main">
         <section class="section1">
             <article>
@@ -251,7 +295,7 @@
                         <div><label>CMP</label> ₹455.75</div>
                         <div><label>Current Return</label> 37.69%</div>
                         <div><button class="tab-button">RHP</button></div>
-                        <div><button class="tab-button">DRHP</button></div>
+                        <div><button class="tab-button">DRHP</button></div> 
                         </div>
                     </div>
                   </div>                  
@@ -296,8 +340,6 @@
             <h2 class="faq-title">Frequently Asked Questions?</h2>
             <p>Find answers to common questions that come in your mind related to IPO.</p>
             <div class="faq-container">
-
-                <!-- Repeat this .faq-item for each question -->
                 <div class="faq-item">
                 <div class="faq-question">
                     <span>What is an IPO?</span>
@@ -307,7 +349,6 @@
                     An IPO (Initial Public Offering) is when a private company offers shares to the public for the first time.
                 </div>
                 </div>
-
                 <div class="faq-item">
                 <div class="faq-question">
                     <span>Who can apply for an IPO?</span>
@@ -317,7 +358,6 @@
                     Any Indian citizen with a PAN card and Demat account can apply for IPOs.
                 </div>
                 </div>
-
                 <div class="faq-item">
                 <div class="faq-question">
                     <span>What is a price band?</span>
@@ -327,7 +367,6 @@
                     The price band is the range within which investors can bid for shares in a book-building IPO.
                 </div>
                 </div>
-
                 <div class="faq-item">
                 <div class="faq-question">
                     <span>What is a Demat account?</span>
@@ -337,7 +376,6 @@
                     A Demat account holds your shares in electronic format, similar to how a bank account holds money.
                 </div>
                 </div>
-
                 <div class="faq-item">
                 <div class="faq-question">
                     <span>Can I cancel my IPO application?</span>
@@ -347,7 +385,6 @@
                     Yes, IPO applications can be modified or withdrawn before the IPO closes.
                 </div>
                 </div>
-
                 <div class="faq-item">
                 <div class="faq-question">
                     <span>What is the minimum amount to invest in an IPO?</span>
@@ -357,7 +394,6 @@
                     It depends on the lot size; usually starts from ₹14,000 to ₹15,000 for retail investors.
                 </div>
                 </div>
-
                 <div class="faq-item">
                 <div class="faq-question">
                     <span>What happens after I apply for an IPO?</span>
@@ -367,7 +403,6 @@
                     Funds are blocked in your bank (ASBA) and shares are allotted if selected after the issue closes.
                 </div>
                 </div>
-
                 <div class="faq-item">
                 <div class="faq-question">
                     <span>What is the listing date?</span>
@@ -377,7 +412,6 @@
                     The listing date is the day shares are listed on the stock exchange and start trading.
                 </div>
                 </div>
-
                 <div class="faq-item">
                 <div class="faq-question">
                     <span>What is GMP in IPO?</span>
@@ -387,7 +421,6 @@
                     GMP (Grey Market Premium) is the unofficial premium at which IPO shares are traded before listing.
                 </div>
                 </div>
-
                 <div class="faq-item">
                 <div class="faq-question">
                     <span>Is IPO investment risky?</span>
@@ -397,7 +430,6 @@
                     Yes, IPOs carry market risk. Read RHP/DRHP carefully before investing.
                 </div>
                 </div>
-
                 <div class="faq-item">
                 <div class="faq-question">
                     <span>How do I know if I got IPO allotment?</span>
@@ -407,7 +439,6 @@
                     You can check the allotment status on the registrar's website using your PAN or application number.
                 </div>
                 </div>
-
                 <div class="faq-item">
                 <div class="faq-question">
                     <span>What is the difference between DRHP and RHP?</span>
@@ -417,7 +448,6 @@
                     DRHP is the Draft Red Herring Prospectus filed initially; RHP is the final version with confirmed details.
                 </div>
                 </div>
-
                 <div class="faq-item">
                 <div class="faq-question">
                     <span>How is IPO allotment decided?</span>
@@ -427,7 +457,6 @@
                     Allotment is usually done by lottery or proportionate basis, depending on investor category.
                 </div>
                 </div>
-
                 <div class="faq-item">
                 <div class="faq-question">
                     <span>Can I sell IPO shares on listing day?</span>
@@ -437,10 +466,19 @@
                     Yes, once listed, you can sell IPO shares anytime on the stock exchange.
                 </div>
                 </div>
-
             </div>
-        </section>
-        
+        </section>   
     </main>
+    <script>
+        const menuToggle = document.getElementById("mobile-menu-toggle");
+        const mobileNav = document.getElementById("mobileNav");
+
+        menuToggle.addEventListener("click", () => {
+            mobileNav.classList.toggle("open");
+        });
+    </script>
+    <script src="home.js"></script>
+
+
 </body>
 </html>
