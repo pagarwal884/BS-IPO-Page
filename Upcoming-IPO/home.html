@@ -48,7 +48,7 @@
 
   <body class="bg-[#f6f5f5]">
     <header class="w-full mb-1">
-      <nav class="bg-white w-full shadow-lg">
+      <nav class="bg-white w-full shadow-lg sticky top-0 z-50">
         <div
           class="max-w-[1200px] mx-auto px-4 flex items-center justify-between h-[70px]"
         >
@@ -57,38 +57,76 @@
             <img src="./img/logo.png" class="h-[40px] w-[250px]" alt="Logo" />
           </div>
 
-          <!-- Toggle Button (Mobile Only) -->
+          <!-- Mobile Menu: hidden by default, slide in from right -->
           <div
-            id="toggle-btn"
-            class="md:hidden text-2xl text-gray-600 cursor-pointer mr-2"
+            x-data="{ open: false }"
+            class="md:flex flex-row items-center gap-6"
           >
-            <i class="fa-solid fa-bars"></i>
-          </div>
+            <!-- Toggle Button -->
+            <div
+              class="md:hidden text-2xl text-gray-600 cursor-pointer mr-2"
+              @click="open = !open"
+            >
+              <i class="fa-solid fa-bars"></i>
+            </div>
 
-          <!-- Nav + Buttons -->
-          <div
-            id="mobile-menu"
-            class="hidden md:flex flex-row items-center gap-6"
-            style="min-width: 300px"
-          >
-            <ul class="flex gap-8 text-gray-500 text-[12px]">
-              <li><a href="#" class="hover:text-gray-700">Products</a></li>
-              <li><a href="#" class="hover:text-gray-700">Pricing</a></li>
-              <li><a href="#" class="hover:text-gray-700">Community</a></li>
-              <li><a href="#" class="hover:text-gray-700">Media</a></li>
-              <li><a href="#" class="hover:text-gray-700">Support</a></li>
-            </ul>
+            <!-- Overlay & Slide-in Panel -->
+            <div
+              class="fixed top-0 right-0 h-full w-[70%] sm:w-[60%] bg-white z-50 transform transition-transform duration-300 ease-in-out flex flex-col items-start p-6 gap-6 text-[12px] text-gray-600"
+              :class="open ? 'translate-x-0' : 'translate-x-full'"
+            >
+              <button
+                class="text-xl absolute top-4 right-4"
+                @click="open = false"
+              >
+                ✕
+              </button>
 
-            <div class="flex gap-6 items-center">
-              <a href="#" class="text-gray-500 hover:text-gray-700 text-[12px]"
-                >Sign In</a
-              >
-              <a
-                href="#"
-                class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition text-[12px] whitespace-nowrap"
-              >
-                Sign Up Now
-              </a>
+              <ul class="flex flex-col gap-4 w-full">
+                <li><a href="#" class="hover:text-gray-700">Products</a></li>
+                <li><a href="#" class="hover:text-gray-700">Pricing</a></li>
+                <li><a href="#" class="hover:text-gray-700">Community</a></li>
+                <li><a href="#" class="hover:text-gray-700">Media</a></li>
+                <li><a href="#" class="hover:text-gray-700">Support</a></li>
+              </ul>
+
+              <div class="flex flex-col gap-4 w-full">
+                <a href="#" class="hover:text-gray-700">Sign In</a>
+                <a
+                  href="#"
+                  class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition text-center"
+                >
+                  Sign Up Now
+                </a>
+              </div>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div
+              class="hidden md:flex flex-row items-center gap-6"
+              style="min-width: 300px"
+            >
+              <ul class="flex gap-8 text-gray-500 text-[12px]">
+                <li><a href="#" class="hover:text-gray-700">Products</a></li>
+                <li><a href="#" class="hover:text-gray-700">Pricing</a></li>
+                <li><a href="#" class="hover:text-gray-700">Community</a></li>
+                <li><a href="#" class="hover:text-gray-700">Media</a></li>
+                <li><a href="#" class="hover:text-gray-700">Support</a></li>
+              </ul>
+
+              <div class="flex gap-6 items-center">
+                <a
+                  href="#"
+                  class="text-gray-500 hover:text-gray-700 text-[12px]"
+                  >Sign In</a
+                >
+                <a
+                  href="#"
+                  class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition text-[12px] whitespace-nowrap"
+                >
+                  Sign Up Now
+                </a>
+              </div>
             </div>
           </div>
         </div>
