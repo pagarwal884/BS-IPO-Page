@@ -1,175 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bluestock IPO Application</title>
-    <link rel="stylesheet" href="home.css">
-    
+    <title>Bluestock IPO Platform - Invest in IPOs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
+
 <body>
-
+    <!-- Header -->
     <header class="header">
-        <div class="logo-section">
-            <img src="bluestock.jpg" alt="Bluestock Logo" class="logo" />
-            <span class="site-name">Bluestock</span>
-        </div>
-
-        <nav class="nav desktop-nav">
-            <ul>
-            <li><a href="#">IPO</a></li>
-            <li><a href="#">Products <span class="arr">&#9662;</span></a></li>
-            <li><a href="#">News</a></li>
-            <li><a href="#">BROKERS <span class="arrow-up">↗</span></a></li>
-            <li><a href="#">LIVE NEWS <span class="new-badge">NEW</span></a></li>
-            </ul>
-        </nav>
-
-        <div class="auth-section">
-            <a href="#" class="sign-in">Sign In</a>
-            <a href="#" class="sign-up">Sign Up Now</a>
-            <div class="menu-icon" id="mobile-menu-toggle">
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="bluestock.jpg" alt="Bluestock Logo" class="logo">
+                <span class="site-name">Bluestock</span>
             </div>
-            
-        </div>
 
-
-        <div class="search-wrapper">
-            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="black" stroke-width="2">
-                <circle cx="11" cy="11" r="8"/>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-            </svg>
-            <input type="text" class="search-input" placeholder="Search...">
-        </div>
-
-        <div class="mobile-menu">
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class="mobile-nav">
+            <nav class="nav desktop-nav">
                 <ul>
-                    <li><a href="#">IPO</a></li>
-                    <li><a href="#">Products</a></li>
+                    <li><a href="#" class="active">IPO</a></li>
+                    <li><a href="#">Products <i class="fas fa-chevron-down"></i></a></li>
                     <li><a href="#">News</a></li>
-                    <li><a href="#">Analysis</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="/signup.html">Sign Up</a></li>
-                    <li><a href="/signin.html">Sign In</a></li>
+                    <li><a href="#">Brokers <i class="fas fa-arrow-up-right"></i></a></li>
+                    <li><a href="#">Live News <span class="new-badge">NEW</span></a></li>
                 </ul>
+            </nav>
+
+            <div class="auth-section">
+                <a href="#" class="sign-in">Sign In</a>
+                <a href="#" class="sign-up">Sign Up Now</a>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars mobile-menu-icon"></i>
+                </div>
+            </div>
+
+            <div class="search-wrapper">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="Search IPOs, Companies...">
             </div>
         </div>
-
     </header>
 
-    <div class="breadcrumb" style="padding: 10px 20px; font-size: 14px; color: #555; background-color: #f4f4f4;">
-        Bluestock &gt; IPO
+    <!-- Breadcrumb -->
+    <div class="breadcrumb container">
+        <a href="#">Bluestock</a> &gt; <a href="#">IPO</a>
     </div>
 
-
-    <!-- Mobile menu -->
-    <div class="mobile-nav" id="mobileNav">
-        <ul>
-            <li><a href="#">IPO</a></li>
-            <li><a href="#">Products</a></li>
-            <li><a href="#">News</a></li>
-            <li><a href="#">Analysis</a></li>
-            <li><a href="#">FAQ</a></li>
-        </ul>
-    </div>
-
-
-    <main class="main">
+    <!-- Main Content -->
+    <main class="main container">
         <section class="section1">
             <article>
-                <h2>IPO</h2>
-                <p>Following is the list of companies for IPO as of today.</p>
+                <h2>IPO Investment Platform</h2>
+                <p>Discover, analyze, and invest in upcoming IPOs with comprehensive data and insights</p>
             </article>
-            
         </section>
+
         <section class="section2">
             <article>
-                <h1>Upcoming</h1>
+                <h1>Upcoming IPOs</h1>
                 <div class="ipo-info">
-                    <p>Companies that have filed for an IPO with SEBI.Few details might be disclosed by the companies later on.</p>
-                    <aside dir="rtl"><button class="view-all-btn"> view all</button></aside>
+                    <p>Companies that have filed for an IPO with SEBI. Financial details may be disclosed later.</p>
+                    <aside><button class="view-all-btn">View All Upcoming</button></aside>
                 </div>
             </article>
         </section>
+
         <section class="tab-section">
             <div class="tab-wrapper">
-                <span class="arrow left-arrow">&#x2039;</span>
+                <span class="arrow left-arrow"><i class="fas fa-chevron-left"></i></span>
                 <div class="tabs-container" id="tabsContainer">
                     <!-- Nova Agritech Ltd -->
                     <div class="tab">
                         <div class="tab-header">
-                        <img src="nova.jpg" alt="Nova Logo" class="company-logo">
-                        <h3>Nova Agritech Ltd</h3>
+                            <img src="nova.jpg" alt="Nova Logo" class="company-logo">
+                            <h3>Nova Agritech Ltd</h3>
                         </div>
                         <div class="tab-details">
-                        <div><label>Price Band</label> ₹39-₹41</div>
-                        <div><label>Open Date</label> Jan 23, 2024</div>
-                        <div><label>Close Date</label> Jan 25, 2024</div>
-                        <div><label>Issue Size</label> ₹143.81 Cr</div>
-                        <div><label>Issue Type</label> Book Built Issue</div>
-                        <div><label>Listing Date</label> Jan 31, 2024</div>
-                        <div><button class="tab-button">RHP</button></div>
-                        <div><button class="tab-button">DRHP</button></div>
+                            <div><label>Price Band</label> ₹39-₹41</div>
+                            <div><label>Open Date</label> Jan 23, 2024</div>
+                            <div><label>Close Date</label> Jan 25, 2024</div>
+                            <div><label>Issue Size</label> ₹143.81 Cr</div>
+                            <div><label>Issue Type</label> Book Built Issue</div>
+                            <div><label>Listing Date</label> Jan 31, 2024</div>
+                            <div><button class="tab-button"><i class="fas fa-file-alt"></i> RHP</button></div>
+                            <div><button class="tab-button"><i class="fas fa-file-contract"></i> DRHP</button></div>
                         </div>
                     </div>
-                    
+
                     <!-- EPACK Durable Ltd -->
                     <div class="tab">
                         <div class="tab-header">
-                        <img src="epack.png" alt="EPACK Logo" class="company-logo">
-                        <h3>EPACK Durable Ltd</h3>
+                            <img src="epack.png" alt="EPACK Logo" class="company-logo">
+                            <h3>EPACK Durable Ltd</h3>
                         </div>
                         <div class="tab-details">
-                        <div><label>Price Band</label> ₹218–₹230</div>
-                        <div><label>Open Date</label> Jan 19, 2024</div>
-                        <div><label>Close Date</label> Jan 23, 2024</div>
-                        <div><label>Issue Size</label> ₹640.05 Cr</div>
-                        <div><label>Issue Type</label> Book Built Issue</div>
-                        <div><label>Listing Date</label> Jan 29, 2024</div>
-                        <div><button class="tab-button">RHP</button></div>
-                        <div> <button class="tab-button">DRHP</button></div>
+                            <div><label>Price Band</label> ₹218–₹230</div>
+                            <div><label>Open Date</label> Jan 19, 2024</div>
+                            <div><label>Close Date</label> Jan 23, 2024</div>
+                            <div><label>Issue Size</label> ₹640.05 Cr</div>
+                            <div><label>Issue Type</label> Book Built Issue</div>
+                            <div><label>Listing Date</label> Jan 29, 2024</div>
+                            <div><button class="tab-button"><i class="fas fa-file-alt"></i> RHP</button></div>
+                            <div><button class="tab-button"><i class="fas fa-file-contract"></i> DRHP</button></div>
                         </div>
                     </div>
-                    
+
                     <!-- RK Swamy Ltd -->
                     <div class="tab">
                         <div class="tab-header">
-                        <img src="rkswamy.png" alt="RK Swamy Logo" class="company-logo">
-                        <h3>RK Swamy Ltd</h3>
+                            <img src="rkswamy.png" alt="RK Swamy Logo" class="company-logo">
+                            <h3>RK Swamy Ltd</h3>
                         </div>
                         <div class="tab-details">
-                        <div><label>Price Band</label><div> ₹270-₹288</div></div>
-                        <div><label>Open</label> Mar 4, 2024</div>
-                        <div><label>Close</label> Mar 6, 2024</div>
-                        <div><label>Issue Size</label> ₹423.56 Cr</div>
-                        <div><label>Issue Type</label> Book Built Issue</div>
-                        <div><label>Listing Date</label> Mar 12, 2024</div>
-                        <div><button class="tab-button">RHP</button></div>
-                        <div><button class="tab-button">DRHP</button></div>
+                            <div><label>Price Band</label> ₹270-₹288</div>
+                            <div><label>Open Date</label> Mar 4, 2024</div>
+                            <div><label>Close Date</label> Mar 6, 2024</div>
+                            <div><label>Issue Size</label> ₹423.56 Cr</div>
+                            <div><label>Issue Type</label> Book Built Issue</div>
+                            <div><label>Listing Date</label> Mar 12, 2024</div>
+                            <div><button class="tab-button"><i class="fas fa-file-alt"></i> RHP</button></div>
+                            <div><button class="tab-button"><i class="fas fa-file-contract"></i> DRHP</button></div>
                         </div>
                     </div>
-                  </div>                  
-                <span class="arrow right-arrow">&#x203A;</span>
+                </div>
+                <span class="arrow right-arrow"><i class="fas fa-chevron-right"></i></span>
             </div>
             <div class="indicators" id="indicators">
-                <!-- circles are added dynamically using Javascript -->
-                 <div class="tab-indicators">
+                <div class="tab-indicators">
                     <span class="circle active"></span>
-                    <span class="circle"></span>
-                    <span class="circle"></span>
-                    <span class="circle"></span>
                     <span class="circle"></span>
                     <span class="circle"></span>
                     <span class="circle"></span>
@@ -180,17 +140,15 @@
         <section class="apply-section">
             <div class="apply-tab">
                 <div class="apply-header">
-                <img src="bluestock.jpg" alt="Bluestock Logo" class="apply-logo">
-                <h2 class="apply-title">Bluestock</h2>
+                    <img src="bluestock.jpg" alt="Bluestock Logo" class="apply-logo">
+                    <h2 class="apply-title">Bluestock</h2>
                 </div>
 
                 <h3 class="apply-question">Applying for this IPO?</h3>
 
                 <p class="apply-info">
-                The way you compare & invest in only the best IPO, let us 
-                help you get started by comparing and selecting the 
-                best Demat account. Open your Demat account now 
-                to apply for your favourite IPO. 
+                    The way you compare & invest in only the best IPOs, let us help you get started by comparing and
+                    selecting the best Demat account. Open your Demat account now to apply for your favorite IPOs.
                 </p>
 
                 <button class="demat-button">Open a Demat Account</button>
@@ -199,115 +157,112 @@
 
         <section class="section2">
             <article>
-                <h1>Ongoing</h1>
+                <h1>Ongoing IPOs</h1>
                 <div class="ipo-info">
-                    <p>Companies where the IPO investment process is started and will be listed soon in the stock market for regular trading.</p>
-                    <aside dir="rtl"><button class="view-all-btn"> view all</button></aside>
+                    <p>IPOs currently open for subscription. Invest now before they close.</p>
+                    <aside><button class="view-all-btn">View All Ongoing</button></aside>
                 </div>
             </article>
         </section>
-        
+
         <section class="tab-section">
             <div class="tab-wrapper">
-                
+                <span class="arrow left-arrow"><i class="fas fa-chevron-left"></i></span>
                 <div class="tabs-container" id="tabsContainer">
-                    
                     <div class="tab">
                         <div class="tab-header">
-                        <img src="medi.jpeg" alt="Medi healthcare" class="company-logo">
-                        <h3>Medi Assist Healthcare Services Ltd. IPO</h3>
+                            <img src="medi.jpeg" alt="Medi healthcare" class="company-logo">
+                            <h3>Medi Assist Healthcare Services Ltd. IPO</h3>
                         </div>
                         <div class="tab-details">
-                        <div><label>Price Band</label><div> ₹218-₹230</div></div>
-                        <div><label>Open</label> Jan 19, 2024</div>
-                        <div><label>Close</label> Jan 23, 2024</div>
-                        <div><label>Issue Size</label> ₹640.05 Cr</div>
-                        <div><label>Issue Type</label> Book Built </div>
-                        <div><label>Listing Date</label> Jan 29, 2024</div>
-                        <div><button class="tab-button">RHP</button></div>
-                        <div><button class="tab-button">DRHP</button></div>
+                            <div><label>Price Band</label> ₹218-₹230</div>
+                            <div><label>Open Date</label> Jan 19, 2024</div>
+                            <div><label>Close Date</label> Jan 23, 2024</div>
+                            <div><label>Issue Size</label> ₹640.05 Cr</div>
+                            <div><label>Issue Type</label> Book Built Issue</div>
+                            <div><label>Listing Date</label> Jan 29, 2024</div>
+                            <div><button class="tab-button"><i class="fas fa-file-alt"></i> RHP</button></div>
+                            <div><button class="tab-button"><i class="fas fa-file-contract"></i> DRHP</button></div>
                         </div>
                     </div>
-                  </div>                  
+                </div>
+                <span class="arrow right-arrow"><i class="fas fa-chevron-right"></i></span>
+            </div>
+            <div class="indicators" id="indicators">
+                <div class="tab-indicators">
+                    <span class="circle active"></span>
+                    <span class="circle"></span>
+                </div>
             </div>
         </section>
 
         <section class="section2">
             <article>
-                <h1>New Listed</h1>
+                <h1>Recently Listed IPOs</h1>
                 <div class="ipo-info">
-                    <p>Companies that have been listed recently through an IPO.Find their listing gains and returns here.</p>
-                    <aside dir="rtl"><button class="view-all-btn"> view all</button></aside>
+                    <p>Companies that have been listed recently through an IPO. Track their performance.</p>
+                    <aside><button class="view-all-btn">View All Listed</button></aside>
                 </div>
             </article>
         </section>
 
         <section class="tab-section">
             <div class="tab-wrapper">
-                <span class="arrow left-arrow">&#x2039;</span>
+                <span class="arrow left-arrow"><i class="fas fa-chevron-left"></i></span>
                 <div class="tabs-container" id="tabsContainer">
-                    
                     <div class="tab">
                         <div class="tab-header">
-                        <img src="jyothi.webp" alt="jyothi logo" class="company-logo">
-                        <h3>Jyothi CNC Automation Ltd</h3>
+                            <img src="jyothi.webp" alt="jyothi logo" class="company-logo">
+                            <h3>Jyothi CNC Automation Ltd</h3>
                         </div>
                         <div class="tab-details">
-                        <div><label>IPO Price</label> ₹331</div>
-                        <div><label>Listing Price</label> ₹370</div>
-                        <div><label>Listing Gain</label> 11.78%</div>
-                        <div><label>Listing Date</label> Jan 16, 2024</div>
-                        <div><label>CMP</label> ₹455.75</div>
-                        <div><label>Current Return</label> 37.69%</div>
-                        <div><button class="tab-button">RHP</button></div>
-                        <div><button class="tab-button">DRHP</button></div>
+                            <div><label>IPO Price</label> ₹331</div>
+                            <div><label>Listing Price</label> ₹370</div>
+                            <div><label>Listing Gain</label> <span style="color: var(--success);">11.78%</span></div>
+                            <div><label>Listing Date</label> Jan 16, 2024</div>
+                            <div><label>CMP</label> ₹455.75</div>
+                            <div><label>Current Return</label> <span style="color: var(--success);">37.69%</span></div>
+                            <div><button class="tab-button"><i class="fas fa-chart-line"></i> Performance</button></div>
                         </div>
                     </div>
-                    
-                    
+
                     <div class="tab">
                         <div class="tab-header">
-                        <img src="innova.jpeg" alt="innova Logo" class="company-logo">
-                        <h3>innova Captab Ltd</h3>
+                            <img src="innova.jpeg" alt="innova Logo" class="company-logo">
+                            <h3>Innova Captab Ltd</h3>
                         </div>
                         <div class="tab-details">
-                        <div><label>IPO Price</label> ₹331</div>
-                        <div><label>Listing Price</label> ₹370</div>
-                        <div><label>Listing Gain</label> 11.78%</div>
-                        <div><label>Listing Date</label> Jan 16, 2024</div>
-                        <div><label>CMP</label> ₹455.75</div>
-                        <div><label>Current Return</label> 37.69%</div>
-                        <div><button class="tab-button">RHP</button></div>
-                        <div><button class="tab-button">DRHP</button></div>
+                            <div><label>IPO Price</label> ₹331</div>
+                            <div><label>Listing Price</label> ₹370</div>
+                            <div><label>Listing Gain</label> <span style="color: var(--success);">11.78%</span></div>
+                            <div><label>Listing Date</label> Jan 16, 2024</div>
+                            <div><label>CMP</label> ₹455.75</div>
+                            <div><label>Current Return</label> <span style="color: var(--success);">37.69%</span></div>
+                            <div><button class="tab-button"><i class="fas fa-chart-line"></i> Performance</button></div>
                         </div>
                     </div>
-                    
+
                     <div class="tab">
                         <div class="tab-header">
-                        <img src="Azad.jpeg" alt="Azad Logo" class="company-logo">
-                        <h3>Azad Engineering Ltd</h3>
+                            <img src="Azad.jpeg" alt="Azad Logo" class="company-logo">
+                            <h3>Azad Engineering Ltd</h3>
                         </div>
                         <div class="tab-details">
-                        <div><label>IPO Price</label> ₹331</div>
-                        <div><label>Listing Price</label> ₹370</div>
-                        <div><label>Listing Gain</label> 11.78%</div>
-                        <div><label>Listing Date</label> Jan 16, 2024</div>
-                        <div><label>CMP</label> ₹455.75</div>
-                        <div><label>Current Return</label> 37.69%</div>
-                        <div><button class="tab-button">RHP</button></div>
-                        <div><button class="tab-button">DRHP</button></div> 
+                            <div><label>IPO Price</label> ₹331</div>
+                            <div><label>Listing Price</label> ₹370</div>
+                            <div><label>Listing Gain</label> <span style="color: var(--success);">11.78%</span></div>
+                            <div><label>Listing Date</label> Jan 16, 2024</div>
+                            <div><label>CMP</label> ₹455.75</div>
+                            <div><label>Current Return</label> <span style="color: var(--success);">37.69%</span></div>
+                            <div><button class="tab-button"><i class="fas fa-chart-line"></i> Performance</button></div>
                         </div>
                     </div>
-                  </div>                  
-                <span class="arrow right-arrow">&#x203A;</span>
+                </div>
+                <span class="arrow right-arrow"><i class="fas fa-chevron-right"></i></span>
             </div>
             <div class="indicators" id="indicators">
-                <!-- circles are added dynamically using Javascript -->
-                 <div class="tab-indicators">
+                <div class="tab-indicators">
                     <span class="circle active"></span>
-                    <span class="circle"></span>
-                    <span class="circle"></span>
-                    <span class="circle"></span>
                     <span class="circle"></span>
                     <span class="circle"></span>
                     <span class="circle"></span>
@@ -316,169 +271,164 @@
         </section>
 
         <section class="ipo-news-analysis">
-            <div class="tab-container">
-                <div class="tab-box news-tab">
-                    <h2>IPO News</h2>
-                    <p><strong>Brainbees Solutions files DRHP with SEBI</strong></p>
-                    <p>29 Dec,2:48PM</p> 
-                    <p><strong>Gretex Share Broking files DRHP with SEBI</strong></p>
-                    <p>22 Dec,2:47PM</p>
-                </div>
-                <div class="tab-box analysis-tab">
-                    <h2>IPO Analysis</h2>
-                    <p><strong>Euphoria Infotech India coming with IPO to raise upto Rs 9.60 crore</strong></p>
-                    <p>18 Jan,2:26PM</p>
-                    <p><strong>EPACK Durable coming with IPO to raise upto Rs 662 crore</strong></p>
-                    <p>17 Jan,4:52PM</p>
-                    <p><strong>Qualitek Labs coming with IPO to raise upto Rs 19.64 crore</strong></p>
-                    <p>17 Jan,3:36PM</p>
-                </div>
+            <div class="tab-box news-tab">
+                <h2><i class="fas fa-newspaper"></i> IPO News</h2>
+                <p><strong>Brainbees Solutions files DRHP with SEBI</strong>
+                    <br>29 Dec, 2:48PM
+                </p>
+                <p><strong>Gretex Share Broking files DRHP with SEBI</strong>
+                    <br>22 Dec, 2:47PM
+                </p>
+                <p><strong>Medi Assist Healthcare IPO subscribed 16.25 times</strong>
+                    <br>20 Jan, 3:15PM
+                </p>
+                <p><strong>EPACK Durable IPO to open next week</strong>
+                    <br>18 Jan, 11:30AM
+                </p>
+            </div>
+            <div class="tab-box analysis-tab">
+                <h2><i class="fas fa-chart-bar"></i> IPO Analysis</h2>
+                <p><strong>Euphoria Infotech India coming with IPO to raise upto Rs 9.60 crore</strong>
+                    <br>18 Jan, 2:26PM
+                </p>
+                <p><strong>EPACK Durable coming with IPO to raise upto Rs 662 crore</strong>
+                    <br>17 Jan, 4:52PM
+                </p>
+                <p><strong>Qualitek Labs coming with IPO to raise upto Rs 19.64 crore</strong>
+                    <br>17 Jan, 3:36PM
+                </p>
+                <p><strong>RK Swamy Limited IPO Analysis - Should you invest?</strong>
+                    <br>15 Jan, 10:45AM
+                </p>
             </div>
         </section>
 
         <section class="faq-section">
-            <h2 class="faq-title">Frequently Asked Questions?</h2>
-            <p>Find answers to common questions that come in your mind related to IPO.</p>
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+            <p>Find answers to common questions about IPOs and investing</p>
             <div class="faq-container">
                 <div class="faq-item">
-                <div class="faq-question">
-                    <span>What is an IPO?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    An IPO (Initial Public Offering) is when a private company offers shares to the public for the first time.
-                </div>
-                </div>
-                <div class="faq-item">
-                <div class="faq-question">
-                    <span>Who can apply for an IPO?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    Any Indian citizen with a PAN card and Demat account can apply for IPOs.
-                </div>
+                    <div class="faq-question">
+                        <span>What is an IPO?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        An IPO (Initial Public Offering) is when a private company offers shares to the public for the
+                        first time, allowing it to raise capital from public investors.
+                    </div>
                 </div>
                 <div class="faq-item">
-                <div class="faq-question">
-                    <span>What is a price band?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    The price band is the range within which investors can bid for shares in a book-building IPO.
-                </div>
-                </div>
-                <div class="faq-item">
-                <div class="faq-question">
-                    <span>What is a Demat account?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    A Demat account holds your shares in electronic format, similar to how a bank account holds money.
-                </div>
+                    <div class="faq-question">
+                        <span>Who can apply for an IPO?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Any Indian citizen with a valid PAN card, a Demat account, and a trading account with a
+                        registered broker can apply for an IPO.
+                    </div>
                 </div>
                 <div class="faq-item">
-                <div class="faq-question">
-                    <span>Can I cancel my IPO application?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    Yes, IPO applications can be modified or withdrawn before the IPO closes.
-                </div>
-                </div>
-                <div class="faq-item">
-                <div class="faq-question">
-                    <span>What is the minimum amount to invest in an IPO?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    It depends on the lot size; usually starts from ₹14,000 to ₹15,000 for retail investors.
-                </div>
+                    <div class="faq-question">
+                        <span>What is a price band?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        The price band is the range within which investors can bid for shares in a book-building IPO.
+                        The final price is determined based on investor demand.
+                    </div>
                 </div>
                 <div class="faq-item">
-                <div class="faq-question">
-                    <span>What happens after I apply for an IPO?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    Funds are blocked in your bank (ASBA) and shares are allotted if selected after the issue closes.
-                </div>
-                </div>
-                <div class="faq-item">
-                <div class="faq-question">
-                    <span>What is the listing date?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    The listing date is the day shares are listed on the stock exchange and start trading.
-                </div>
+                    <div class="faq-question">
+                        <span>What is a Demat account?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        A Demat account holds your shares in electronic format, similar to how a bank account holds
+                        money. It's required to hold securities when trading in the stock market.
+                    </div>
                 </div>
                 <div class="faq-item">
-                <div class="faq-question">
-                    <span>What is GMP in IPO?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    GMP (Grey Market Premium) is the unofficial premium at which IPO shares are traded before listing.
-                </div>
-                </div>
-                <div class="faq-item">
-                <div class="faq-question">
-                    <span>Is IPO investment risky?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    Yes, IPOs carry market risk. Read RHP/DRHP carefully before investing.
-                </div>
+                    <div class="faq-question">
+                        <span>Can I cancel my IPO application?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, you can modify or withdraw your IPO application before the issue closing date through your
+                        broker or bank.
+                    </div>
                 </div>
                 <div class="faq-item">
-                <div class="faq-question">
-                    <span>How do I know if I got IPO allotment?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    You can check the allotment status on the registrar's website using your PAN or application number.
-                </div>
-                </div>
-                <div class="faq-item">
-                <div class="faq-question">
-                    <span>What is the difference between DRHP and RHP?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    DRHP is the Draft Red Herring Prospectus filed initially; RHP is the final version with confirmed details.
-                </div>
-                </div>
-                <div class="faq-item">
-                <div class="faq-question">
-                    <span>How is IPO allotment decided?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    Allotment is usually done by lottery or proportionate basis, depending on investor category.
-                </div>
-                </div>
-                <div class="faq-item">
-                <div class="faq-question">
-                    <span>Can I sell IPO shares on listing day?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    Yes, once listed, you can sell IPO shares anytime on the stock exchange.
-                </div>
+                    <div class="faq-question">
+                        <span>What is the minimum amount to invest in an IPO?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        The minimum investment is determined by the lot size and price band. Typically, it ranges from
+                        ₹14,000 to ₹15,000 for retail investors.
+                    </div>
                 </div>
             </div>
-        </section>   
+        </section>
     </main>
-    <script>
-        const menuToggle = document.getElementById("mobile-menu-toggle");
-        const mobileNav = document.getElementById("mobileNav");
 
-        menuToggle.addEventListener("click", () => {
-            mobileNav.classList.toggle("open");
-        });
-    </script>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo-section">
+                <img src="bluestock.jpg" alt="Bluestock Logo" class="footer-logo">
+                <p class="footer-about">
+                    Bluestock is a leading IPO investment platform providing comprehensive data, analysis, and tools to
+                    help investors make informed decisions in the primary market.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links-section">
+                <h3 class="footer-heading">Products</h3>
+                <div class="footer-links">
+                    <a href="#">IPO Tracker</a>
+                    <a href="#">IPO Calendar</a>
+                    <a href="#">IPO Analysis</a>
+                    <a href="#">IPO GMP</a>
+                    <a href="#">IPO Subscription</a>
+                </div>
+            </div>
+
+            <div class="footer-links-section">
+                <h3 class="footer-heading">Company</h3>
+                <div class="footer-links">
+                    <a href="#">About Us</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Press</a>
+                </div>
+            </div>
+
+            <div class="footer-links-section">
+                <h3 class="footer-heading">Legal</h3>
+                <div class="footer-links">
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Disclaimer</a>
+                    <a href="#">Refund Policy</a>
+                    <a href="#">SEBI Guidelines</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            © 2024 Bluestock Financial Services Pvt. Ltd. All rights reserved. | SEBI Registration No: INZ000123456
+        </div>
+    </footer>
+
     <script src="home.js"></script>
-
-
 </body>
+
 </html>
