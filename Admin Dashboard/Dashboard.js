@@ -13,12 +13,6 @@ class DashboardApp {
     this.initCharts();
     this.renderIPOData();
     this.renderTopIPOData();
-
-    // Add dark mode class if previously selected
-    if (localStorage.getItem("darkMode") === "enabled") {
-      document.body.classList.add("dark-mode");
-      document.querySelector("#darkModeToggle i").className = "fas fa-sun";
-    }
   }
 
   setupEventListeners() {
@@ -62,11 +56,6 @@ class DashboardApp {
         document.getElementById("searchSuggestions").style.display = "block";
       }
     });
-
-    // Dark mode toggle
-    document
-      .getElementById("darkModeToggle")
-      .addEventListener("click", this.toggleDarkMode);
 
     // Add IPO button
     document.getElementById("addIpoBtn").addEventListener("click", () => {
@@ -527,19 +516,6 @@ class DashboardApp {
     setTimeout(() => {
       toast.classList.remove("show");
     }, 3000);
-  }
-
-  toggleDarkMode() {
-    document.body.classList.toggle("dark-mode");
-    const icon = document.querySelector("#darkModeToggle i");
-
-    if (document.body.classList.contains("dark-mode")) {
-      icon.className = "fas fa-sun";
-      localStorage.setItem("darkMode", "enabled");
-    } else {
-      icon.className = "fas fa-moon";
-      localStorage.setItem("darkMode", "disabled");
-    }
   }
 }
 
