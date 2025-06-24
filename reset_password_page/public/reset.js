@@ -12,13 +12,13 @@ document
     const errorText = document.getElementById("errorText");
 
     // Hide previous messages
-    successMessage.style.display = "none";
-    errorMessage.style.display = "none";
+    successMessage.classList.remove("show");
+    errorMessage.classList.remove("show");
 
     // Validate email
     if (!email || !isValidEmail(email)) {
       errorText.textContent = "Please enter a valid email address.";
-      errorMessage.style.display = "flex";
+      errorMessage.classList.add("show");
       return;
     }
 
@@ -33,11 +33,11 @@ document
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
       // Simulate success response
-      successMessage.style.display = "flex";
+      successMessage.classList.add("show");
       document.getElementById("email").value = "";
     } catch (error) {
       errorText.textContent = "An error occurred. Please try again.";
-      errorMessage.style.display = "flex";
+      errorMessage.classList.add("show");
     } finally {
       // Reset button state
       resetBtn.disabled = false;
@@ -60,6 +60,6 @@ function goBack() {
 document.getElementById("email").addEventListener("input", function () {
   const successMessage = document.getElementById("successMessage");
   const errorMessage = document.getElementById("errorMessage");
-  successMessage.style.display = "none";
-  errorMessage.style.display = "none";
+  successMessage.classList.remove("show");
+  errorMessage.classList.remove("show");
 });

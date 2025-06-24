@@ -13,14 +13,14 @@
   <div class="container">
     <div class="logo">
       <div class="logo-icon">
-        <img src="./logo.png" alt="Logo">
+        <img src="./logo.png" alt="Bluestock Logo">
       </div>
       <div class="logo-text">BLUESTOCK</div>
     </div>
 
     <h1>Forgot Password?</h1>
     <p class="subtitle">
-      Enter your email address and we'll send you a link to reset your password.
+      Enter your email address and we'll send you a secure link to reset your password.
     </p>
 
     <div class="message success-message" id="successMessage">
@@ -38,8 +38,10 @@
         <label for="email">
           <i class="fas fa-envelope"></i> Email Address
         </label>
-        <i class="fas fa-at input-icon"></i>
-        <input type="email" id="email" name="email" placeholder="hello@bluestock.in" required autocomplete="email" />
+        <div class="input-container">
+          <i class="fas fa-at input-icon"></i>
+          <input type="email" id="email" name="email" placeholder="hello@bluestock.in" required autocomplete="email" />
+        </div>
       </div>
 
       <button type="submit" class="reset-btn" id="resetBtn">
@@ -48,7 +50,7 @@
       </button>
     </form>
 
-    <a href="#" class="back-link" onclick="goBack()">
+    <a href="sign_in.html" class="back-link" onclick="goBack()">
       <i class="fas fa-arrow-left"></i> Back to login
     </a>
 
@@ -56,7 +58,7 @@
       Need help? Contact <a href="mailto:support@bluestock.in">support@bluestock.in</a>
     </div>
   </div>
-  <script src="./reset.js"></script>
+  <script src="reset.js"></script>
 </body>
 
 </html>

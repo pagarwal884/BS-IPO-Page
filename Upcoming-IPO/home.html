@@ -1,524 +1,711 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IPO Listings | Bluestock</title>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script
-      defer
-      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
-    ></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
 
-    <!-- Tailwind CSS -->
-    <link href="./src/output.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    <title>Responsive Navbar</title>
+  <style>
+    * {
+      font-family: "Poppins", sans-serif;
+    }
 
-    <style>
-      * {
-        font-family: "Poppins", sans-serif;
-      }
+    body {
+      overflow-x: hidden;
+      background: linear-gradient(to bottom, #f0f4f8, #e6e9f0);
+    }
 
-      body {
-        overflow-x: hidden;
-      }
+    .overflow-x-auto::-webkit-scrollbar {
+      display: none;
+    }
 
-      .overflow-x-auto::-webkit-scrollbar {
-        display: none;
-      }
-    </style>
-  </head>
+    /* New polished styles */
+    .card-hover {
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(209, 213, 219, 0.3);
+    }
 
-  <body class="bg-[#f6f5f5]">
-    <header class="w-full mb-1">
-      <nav class="bg-white w-full shadow-lg sticky top-0 z-50">
-        <div
-          class="max-w-[1200px] mx-auto px-4 flex items-center justify-between h-[70px]"
-        >
-          <!-- Logo (always left) -->
-          <div class="logo flex-shrink-0 mr-4">
-            <img src="./img/logo.png" class="h-[40px] w-[250px]" alt="Logo" />
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      border-color: rgba(159, 184, 255, 0.4);
+    }
+
+    .accordion-transition {
+      transition: max-height 0.3s ease-out;
+    }
+
+    .btn-hover {
+      transition: all 0.2s ease;
+    }
+
+    .btn-hover:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .gradient-header {
+      background: linear-gradient(to right, #ffffff, #f8fafc);
+    }
+
+    .status-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: 20px;
+    }
+
+    .ipo-progress {
+      height: 5px;
+      background: #e9ecef;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .ipo-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #4361ee, #3a56d4);
+      border-radius: 10px;
+    }
+
+    .footer-link {
+      transition: all 0.2s ease;
+    }
+
+    .footer-link:hover {
+      color: #4361ee;
+      transform: translateX(3px);
+    }
+
+    .nav-link {
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #4361ee;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover:after {
+      width: 100%;
+    }
+
+    .accordion-header {
+      transition: background-color 0.2s ease;
+    }
+
+    .accordion-header:hover {
+      background-color: #f8fafc;
+    }
+  </style>
+</head>
+
+<body class="bg-[#f6f5f5]">
+  <header class="w-full mb-1">
+    <nav class="gradient-header w-full shadow-md sticky top-0 z-50">
+      <div class="max-w-[1200px] mx-auto px-4 flex items-center justify-between h-[70px]">
+        <!-- Logo - Updated to match Bluestock branding -->
+        <div class="logo flex-shrink-0 mr-4">
+          <div class="flex items-center">
+            <div class="bg-blue-600 text-white p-2 rounded-lg">
+              <i class="fas fa-chart-line text-xl"></i>
+            </div>
+            <span class="ml-3 font-bold text-xl text-gray-800">Bluestock</span>
+          </div>
+        </div>
+
+        <!-- Mobile Menu: hidden by default, slide in from right -->
+        <div x-data="{ open: false }" class="md:flex flex-row items-center gap-6">
+          <!-- Toggle Button -->
+          <div class="md:hidden text-2xl text-gray-600 cursor-pointer mr-2" @click="open = !open">
+            <i class="fa-solid fa-bars"></i>
           </div>
 
-          <!-- Mobile Menu: hidden by default, slide in from right -->
+          <!-- Overlay & Slide-in Panel -->
           <div
-            x-data="{ open: false }"
-            class="md:flex flex-row items-center gap-6"
-          >
-            <!-- Toggle Button -->
-            <div
-              class="md:hidden text-2xl text-gray-600 cursor-pointer mr-2"
-              @click="open = !open"
-            >
-              <i class="fa-solid fa-bars"></i>
+            class="fixed top-0 right-0 h-full w-[70%] sm:w-[60%] bg-white z-50 transform transition-transform duration-300 ease-in-out flex flex-col items-start p-6 gap-6 text-[12px] text-gray-600"
+            :class="open ? 'translate-x-0' : 'translate-x-full'">
+            <button class="text-xl absolute top-4 right-4" @click="open = false">
+              ✕
+            </button>
+
+            <ul class="flex flex-col gap-4 w-full">
+              <li><a href="#" class="nav-link hover:text-blue-600 font-medium">IPO</a></li>
+              <li><a href="#" class="nav-link hover:text-blue-600 font-medium">Products</a></li>
+              <li><a href="#" class="nav-link hover:text-blue-600 font-medium">News</a></li>
+              <li><a href="#" class="nav-link hover:text-blue-600 font-medium">Brokers</a></li>
+              <li><a href="#" class="nav-link hover:text-blue-600 font-medium">Live News</a></li>
+            </ul>
+
+            <div class="flex flex-col gap-4 w-full mt-4">
+              <a href="#" class="hover:text-blue-600 font-medium">Sign In</a>
+              <a href="#"
+                class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition text-center font-medium btn-hover">
+                Sign Up Now
+              </a>
             </div>
+          </div>
 
-            <!-- Overlay & Slide-in Panel -->
-            <div
-              class="fixed top-0 right-0 h-full w-[70%] sm:w-[60%] bg-white z-50 transform transition-transform duration-300 ease-in-out flex flex-col items-start p-6 gap-6 text-[12px] text-gray-600"
-              :class="open ? 'translate-x-0' : 'translate-x-full'"
-            >
-              <button
-                class="text-xl absolute top-4 right-4"
-                @click="open = false"
-              >
-                ✕
-              </button>
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex flex-row items-center gap-6" style="min-width: 300px">
+            <ul class="flex gap-8 text-gray-500 text-[12px]">
+              <li><a href="#" class="nav-link hover:text-blue-600 font-medium">IPO</a></li>
+              <li><a href="#" class="nav-link hover:text-blue-600 font-medium">Products</a></li>
+              <li><a href="#" class="nav-link hover:text-blue-600 font-medium">News</a></li>
+              <li><a href="#" class="nav-link hover:text-blue-600 font-medium">Brokers</a></li>
+              <li><a href="#" class="nav-link hover:text-blue-600 font-medium">Live News</a></li>
+            </ul>
 
-              <ul class="flex flex-col gap-4 w-full">
-                <li><a href="#" class="hover:text-gray-700">Products</a></li>
-                <li><a href="#" class="hover:text-gray-700">Pricing</a></li>
-                <li><a href="#" class="hover:text-gray-700">Community</a></li>
-                <li><a href="#" class="hover:text-gray-700">Media</a></li>
-                <li><a href="#" class="hover:text-gray-700">Support</a></li>
-              </ul>
-
-              <div class="flex flex-col gap-4 w-full">
-                <a href="#" class="hover:text-gray-700">Sign In</a>
-                <a
-                  href="#"
-                  class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition text-center"
-                >
-                  Sign Up Now
-                </a>
-              </div>
-            </div>
-
-            <!-- Desktop Menu -->
-            <div
-              class="hidden md:flex flex-row items-center gap-6"
-              style="min-width: 300px"
-            >
-              <ul class="flex gap-8 text-gray-500 text-[12px]">
-                <li><a href="#" class="hover:text-gray-700">Products</a></li>
-                <li><a href="#" class="hover:text-gray-700">Pricing</a></li>
-                <li><a href="#" class="hover:text-gray-700">Community</a></li>
-                <li><a href="#" class="hover:text-gray-700">Media</a></li>
-                <li><a href="#" class="hover:text-gray-700">Support</a></li>
-              </ul>
-
-              <div class="flex gap-6 items-center">
-                <a
-                  href="#"
-                  class="text-gray-500 hover:text-gray-700 text-[12px]"
-                  >Sign In</a
-                >
-                <a
-                  href="#"
-                  class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition text-[12px] whitespace-nowrap"
-                >
-                  Sign Up Now
-                </a>
-              </div>
+            <div class="flex gap-6 items-center">
+              <a href="#" class="text-gray-500 hover:text-blue-600 text-[12px] font-medium">Sign In</a>
+              <a href="#"
+                class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition text-[12px] whitespace-nowrap font-medium btn-hover">
+                Sign Up Now
+              </a>
             </div>
           </div>
         </div>
-      </nav>
-    </header>
+      </div>
+    </nav>
+  </header>
 
-    <main class="px-6 md:px-10 py-10 max-w-screen-xl mx-auto mb-10">
-      <!-- Breadcrumb -->
-      <div class="mb-2 text-sm text-blue-600 space-x-1">
-        <a href="#" class="hover:underline">Bluestock</a>
-        <span>&gt;</span>
-        <a href="#" class="hover:underline">IPO</a>
-        <span>&gt;</span>
-        <a href="#" class="text-gray-800">UPCOMING IPO</a>
+  <main class="px-6 md:px-10 py-10 max-w-screen-xl mx-auto mb-10">
+    <!-- Breadcrumb -->
+    <div class="mb-2 text-sm text-blue-600 space-x-1 flex items-center">
+      <a href="#" class="hover:underline">Bluestock</a>
+      <span class="text-gray-400 mx-1">›</span>
+      <a href="#" class="hover:underline">IPO</a>
+      <span class="text-gray-400 mx-1">›</span>
+      <a href="#" class="text-gray-800 font-medium">UPCOMING IPO</a>
+    </div>
+
+    <!-- Heading -->
+    <div class="mb-8">
+      <h1 class="text-2xl md:text-3xl font-bold mb-2 text-gray-800">Upcoming IPO</h1>
+      <p class="text-sm md:text-base text-gray-600 max-w-3xl">
+        Companies that have filed for an IPO with SEBI. Few details might be
+        disclosed by the companies later. Stay updated with the latest IPO listings.
+      </p>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="bg-white rounded-lg shadow-sm p-4 mb-8 flex flex-wrap gap-4 justify-between">
+      <div class="flex items-center gap-2">
+        <div class="bg-blue-100 p-2 rounded-lg">
+          <i class="fa-solid fa-building text-blue-600 text-lg"></i>
+        </div>
+        <div>
+          <div class="text-xs text-gray-500">Total IPOs</div>
+          <div class="font-bold text-gray-800">24</div>
+        </div>
       </div>
 
-      <!-- Heading -->
-      <div class="mb-3">
-        <h1 class="text-xl md:text-2xl font-bold mb-0.5">Upcoming IPO</h1>
-        <p class="text-sm md:text-base text-gray-700">
-          Companies that have filed for an IPO with SEBI. Few details might be
-          disclosed by the companies later.
+      <div class="flex items-center gap-2">
+        <div class="bg-green-100 p-2 rounded-lg">
+          <i class="fa-solid fa-arrow-trend-up text-green-600 text-lg"></i>
+        </div>
+        <div>
+          <div class="text-xs text-gray-500">Open Now</div>
+          <div class="font-bold text-gray-800">3</div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <div class="bg-yellow-100 p-2 rounded-lg">
+          <i class="fa-solid fa-clock text-yellow-600 text-lg"></i>
+        </div>
+        <div>
+          <div class="text-xs text-gray-500">Upcoming</div>
+          <div class="font-bold text-gray-800">8</div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <div class="bg-purple-100 p-2 rounded-lg">
+          <i class="fa-solid fa-chart-line text-purple-600 text-lg"></i>
+        </div>
+        <div>
+          <div class="text-xs text-gray-500">Recently Listed</div>
+          <div class="font-bold text-gray-800">13</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- CARD 1 -->
+      <div class="bg-white rounded-lg p-5 shadow card-hover relative">
+        <span class="status-badge bg-green-100 text-green-800">OPEN</span>
+
+        <div class="flex flex-col sm:flex-row sm:items-center">
+          <div
+            class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 flex items-center justify-center text-gray-400">
+            <i class="fas fa-seedling text-2xl"></i>
+          </div>
+          <h2 class="text-blue-500 text-base font-bold mt-3 sm:mt-0 sm:ml-4 text-center sm:text-left">
+            Nova Agritech Ltd.
+          </h2>
+        </div>
+
+        <div class="my-4">
+          <div class="text-xs text-gray-500 mb-1">Subscription: 12.5x</div>
+          <div class="ipo-progress">
+            <div class="ipo-progress-bar" style="width: 85%"></div>
+          </div>
+        </div>
+
+        <!-- Info Grid -->
+        <div class="grid grid-cols-2 gap-y-3 text-[12px] text-gray-600 mt-4">
+          <span>PRICE BAND</span>
+          <span class="text-[14px] text-gray-700 font-bold">₹41 - ₹44</span>
+
+          <span>OPEN</span>
+          <span class="text-[14px] text-gray-700 font-bold">2024-01-22</span>
+
+          <span>CLOSE</span>
+          <span class="text-[14px] text-gray-700 font-bold">2024-01-24</span>
+
+          <span>ISSUE SIZE</span>
+          <span class="text-[14px] text-gray-700 font-bold">143.81cr</span>
+
+          <span>ISSUE TYPE</span>
+          <span class="text-[14px] text-gray-700 font-bold">Book Built</span>
+
+          <span>LISTING DATE</span>
+          <span class="text-[14px] text-gray-700 font-bold">2024-01-30</span>
+        </div>
+
+        <!-- Buttons -->
+        <div class="mt-6 flex gap-3 justify-start text-[14px]">
+          <button class="bg-white border border-blue-600 text-blue-600 px-4 py-2 rounded-md font-medium btn-hover">
+            View Details
+          </button>
+          <button class="bg-blue-600 text-white px-4 py-2 rounded-md font-medium btn-hover">
+            Apply Now
+          </button>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="bg-white rounded-lg p-5 shadow card-hover relative">
+        <span class="status-badge bg-yellow-100 text-yellow-800">UPCOMING</span>
+
+        <div class="flex flex-col sm:flex-row sm:items-center">
+          <div
+            class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 flex items-center justify-center text-gray-400">
+            <i class="fas fa-microchip text-2xl"></i>
+          </div>
+          <h2 class="text-blue-500 text-base font-bold mt-3 sm:mt-0 sm:ml-4 text-center sm:text-left">
+            Tech Innovations Ltd.
+          </h2>
+        </div>
+
+        <div class="my-4">
+          <div class="text-xs text-gray-500 mb-1">Expected in 7 days</div>
+          <div class="ipo-progress">
+            <div class="ipo-progress-bar" style="width: 25%"></div>
+          </div>
+        </div>
+
+        <!-- Info Grid -->
+        <div class="grid grid-cols-2 gap-y-3 text-[12px] text-gray-600 mt-4">
+          <span>PRICE BAND</span>
+          <span class="text-[14px] text-gray-700 font-bold">₹120 - ₹125</span>
+
+          <span>OPEN</span>
+          <span class="text-[14px] text-gray-700 font-bold">2024-02-05</span>
+
+          <span>CLOSE</span>
+          <span class="text-[14px] text-gray-700 font-bold">2024-02-07</span>
+
+          <span>ISSUE SIZE</span>
+          <span class="text-[14px] text-gray-700 font-bold">320.50cr</span>
+
+          <span>ISSUE TYPE</span>
+          <span class="text-[14px] text-gray-700 font-bold">Book Built</span>
+
+          <span>LISTING DATE</span>
+          <span class="text-[14px] text-gray-700 font-bold">2024-02-14</span>
+        </div>
+
+        <!-- Buttons -->
+        <div class="mt-6 flex gap-3 justify-start text-[14px]">
+          <button class="bg-white border border-blue-600 text-blue-600 px-4 py-2 rounded-md font-medium btn-hover">
+            View Details
+          </button>
+          <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-md font-medium" disabled>
+            Coming Soon
+          </button>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="bg-white rounded-lg p-5 shadow card-hover relative">
+        <span class="status-badge bg-blue-100 text-blue-800">NEW</span>
+
+        <div class="flex flex-col sm:flex-row sm:items-center">
+          <div
+            class="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 flex items-center justify-center text-gray-400">
+            <i class="fas fa-heartbeat text-2xl"></i>
+          </div>
+          <h2 class="text-blue-500 text-base font-bold mt-3 sm:mt-0 sm:ml-4 text-center sm:text-left">
+            HealthCare Solutions Inc.
+          </h2>
+        </div>
+
+        <div class="my-4">
+          <div class="text-xs text-gray-500 mb-1">Subscription: 3.2x</div>
+          <div class="ipo-progress">
+            <div class="ipo-progress-bar" style="width: 45%"></div>
+          </div>
+        </div>
+
+        <!-- Info Grid -->
+        <div class="grid grid-cols-2 gap-y-3 text-[12px] text-gray-600 mt-4">
+          <span>PRICE BAND</span>
+          <span class="text-[14px] text-gray-700 font-bold">₹85 - ₹90</span>
+
+          <span>OPEN</span>
+          <span class="text-[14px] text-gray-700 font-bold">2024-01-25</span>
+
+          <span>CLOSE</span>
+          <span class="text-[14px] text-gray-700 font-bold">2024-01-27</span>
+
+          <span>ISSUE SIZE</span>
+          <span class="text-[14px] text-gray-700 font-bold">210.75cr</span>
+
+          <span>ISSUE TYPE</span>
+          <span class="text-[14px] text-gray-700 font-bold">Book Built</span>
+
+          <span>LISTING DATE</span>
+          <span class="text-[14px] text-gray-700 font-bold">2024-02-02</span>
+        </div>
+
+        <!-- Buttons -->
+        <div class="mt-6 flex gap-3 justify-start text-[14px]">
+          <button class="bg-white border border-blue-600 text-blue-600 px-4 py-2 rounded-md font-medium btn-hover">
+            View Details
+          </button>
+          <button class="bg-blue-600 text-white px-4 py-2 rounded-md font-medium btn-hover">
+            Apply Now
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- View More Button -->
+    <div class="mt-10 text-center">
+      <button class="bg-white border border-blue-600 text-blue-600 px-6 py-3 rounded-md font-medium btn-hover">
+        <i class="fa-solid fa-arrow-down mr-2"></i>View All IPOs
+      </button>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="mt-16 space-y-6 px-6 md:px-10 max-w-screen-xl mx-auto">
+      <div class="text-center">
+        <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-3">
+          Frequently Asked Questions
+        </h1>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Find answers to common questions that come in your mind related to
+          IPO investing and subscription process.
         </p>
       </div>
 
-      <!-- Card Grid -->
-      <div
-        class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-      >
-        <!-- CARD -->
-        <div class="bg-white rounded-lg p-4 shadow">
-          <div class="flex flex-col sm:flex-row sm:items-center">
-            <img
-              src="./img/24e25de8b303b6ac52168faea60505f339e99540.png"
-              alt="Nova Agritech"
-              class="w-[110px] h-auto mx-auto sm:mx-0"
-            />
-            <h2
-              class="text-blue-500 text-sm font-semibold mt-3 sm:mt-0 sm:ml-6 text-center sm:text-left"
-            >
-              Nova Agritech Ltd.
-            </h2>
+      <!-- Accordions -->
+      <div class="w-full space-y-4">
+        <!-- Accordion 1 -->
+        <div x-data="{ open: false }"
+          class="w-full bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden">
+          <div class="flex justify-between items-center px-5 py-4 cursor-pointer bg-gray-50 accordion-header"
+            @click="open = !open">
+            <p class="font-bold text-lg text-gray-800">How to Subscribe to an IPO?</p>
+            <span class="text-2xl font-bold transition-transform duration-200">
+              <span class="text-blue-600" x-text="open ? '−' : '+'"></span>
+            </span>
           </div>
-
-          <!-- Info Grid -->
-          <div class="grid grid-cols-2 gap-y-2 text-[12px] text-gray-600 mt-4">
-            <span>PRICE BAND</span>
-            <span class="text-[14px] text-gray-700 font-bold">₹41 - ₹44</span>
-
-            <span>OPEN</span>
-            <span class="text-[14px] text-gray-700 font-bold">2024-01-22</span>
-
-            <span>CLOSE</span>
-            <span class="text-[14px] text-gray-700 font-bold">2024-01-24</span>
-
-            <span>ISSUE SIZE</span>
-            <span class="text-[14px] text-gray-700 font-bold">143.81cr</span>
-
-            <span>ISSUE TYPE</span>
-            <span class="text-[14px] text-gray-700 font-bold">Book Built</span>
-
-            <span>LISTING DATE</span>
-            <span class="text-[14px] text-gray-700 font-bold">2024-01-30</span>
-          </div>
-
-          <!-- Buttons -->
-          <div class="mt-6 flex gap-3 justify-start text-[14px]">
-            <button
-              class="bg-white border border-blue-600 text-blue-600 px-3 py-1 rounded-md"
-            >
-              RHP
-            </button>
-            <button class="bg-orange-600 text-white px-3 py-1 rounded-md">
-              DRHP
-            </button>
-          </div>
-        </div>
-        <div class="bg-white rounded-lg p-4 shadow">
-          <div class="flex flex-col sm:flex-row sm:items-center">
-            <img
-              src="./img/24e25de8b303b6ac52168faea60505f339e99540.png"
-              alt="Nova Agritech"
-              class="w-[110px] h-auto mx-auto sm:mx-0"
-            />
-            <h2
-              class="text-blue-500 text-sm font-semibold mt-3 sm:mt-0 sm:ml-6 text-center sm:text-left"
-            >
-              Nova Agritech Ltd.
-            </h2>
-          </div>
-
-          <!-- Info Grid -->
-          <div class="grid grid-cols-2 gap-y-2 text-[12px] text-gray-600 mt-4">
-            <span>PRICE BAND</span>
-            <span class="text-[14px] text-gray-700 font-bold">₹41 - ₹44</span>
-
-            <span>OPEN</span>
-            <span class="text-[14px] text-gray-700 font-bold">2024-01-22</span>
-
-            <span>CLOSE</span>
-            <span class="text-[14px] text-gray-700 font-bold">2024-01-24</span>
-
-            <span>ISSUE SIZE</span>
-            <span class="text-[14px] text-gray-700 font-bold">143.81cr</span>
-
-            <span>ISSUE TYPE</span>
-            <span class="text-[14px] text-gray-700 font-bold">Book Built</span>
-
-            <span>LISTING DATE</span>
-            <span class="text-[14px] text-gray-700 font-bold">2024-01-30</span>
-          </div>
-
-          <!-- Buttons -->
-          <div class="mt-6 flex gap-3 justify-start text-[14px]">
-            <button
-              class="bg-white border border-blue-600 text-blue-600 px-3 py-1 rounded-md"
-            >
-              RHP
-            </button>
-            <button class="bg-orange-600 text-white px-3 py-1 rounded-md">
-              DRHP
-            </button>
+          <div x-show="open" x-collapse class="px-5 pb-6 pt-2 bg-white accordion-transition"
+            :class="open ? 'max-h-96' : 'max-h-0'">
+            <ul class="list-disc space-y-2 pl-6">
+              <li class="font-medium text-gray-700">
+                Step 1: Login to your respective service provider.
+              </li>
+              <li class="font-medium text-gray-700">Step 2: Click on the IPO button</li>
+              <li class="font-medium text-gray-700">
+                Step 3: Select the IPO and enter the details
+              </li>
+              <li class="font-medium text-gray-700">
+                Step 4: Make payment or authorize mandate
+              </li>
+            </ul>
+            <div class="mt-4 text-sm text-gray-600">
+              <i class="fa-solid fa-lightbulb text-yellow-500 mr-2"></i>
+              Tip: Ensure you have sufficient funds in your account before applying.
+            </div>
           </div>
         </div>
 
-        <div class="bg-white rounded-lg p-4 shadow">
-          <div class="flex flex-col sm:flex-row sm:items-center">
-            <img
-              src="./img/24e25de8b303b6ac52168faea60505f339e99540.png"
-              alt="Nova Agritech"
-              class="w-[110px] h-auto mx-auto sm:mx-0"
-            />
-            <h2
-              class="text-blue-500 text-sm font-semibold mt-3 sm:mt-0 sm:ml-6 text-center sm:text-left"
-            >
-              Nova Agritech Ltd.
-            </h2>
+        <!-- Accordion 2 -->
+        <div x-data="{ open: false }"
+          class="w-full bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden">
+          <div class="flex justify-between items-center px-5 py-4 cursor-pointer bg-gray-50 accordion-header"
+            @click="open = !open">
+            <p class="font-bold text-lg text-gray-800">
+              Should I buy an IPO on the first day?
+            </p>
+            <span class="text-2xl font-bold transition-transform duration-200">
+              <span class="text-blue-600" x-text="open ? '−' : '+'"></span>
+            </span>
           </div>
+          <div x-show="open" x-collapse class="px-5 pb-6 pt-2 bg-white accordion-transition"
+            :class="open ? 'max-h-96' : 'max-h-0'">
+            <ul class="list-disc space-y-2 pl-6">
+              <li class="font-medium text-gray-700">
+                If oversubscribed, IPOs often list at a premium.
+              </li>
+              <li class="font-medium text-gray-700">
+                IPOs from known, profitable brands perform well.
+              </li>
+              <li class="font-medium text-gray-700">
+                Always read the DRHP and understand the risks.
+              </li>
+            </ul>
+            <div class="mt-4 flex">
+              <div class="bg-blue-50 p-3 rounded-lg flex-1">
+                <div class="font-bold text-blue-800 flex items-center">
+                  <i class="fa-solid fa-thumbs-up text-blue-600 mr-2"></i>
+                  Pros
+                </div>
+                <ul class="list-disc pl-5 mt-2 text-sm text-gray-700">
+                  <li>Potential for high listing gains</li>
+                  <li>Early entry into promising companies</li>
+                </ul>
+              </div>
 
-          <!-- Info Grid -->
-          <div class="grid grid-cols-2 gap-y-2 text-[12px] text-gray-600 mt-4">
-            <span>PRICE BAND</span>
-            <span class="text-[14px] text-gray-700 font-bold">₹41 - ₹44</span>
-
-            <span>OPEN</span>
-            <span class="text-[14px] text-gray-700 font-bold">2024-01-22</span>
-
-            <span>CLOSE</span>
-            <span class="text-[14px] text-gray-700 font-bold">2024-01-24</span>
-
-            <span>ISSUE SIZE</span>
-            <span class="text-[14px] text-gray-700 font-bold">143.81cr</span>
-
-            <span>ISSUE TYPE</span>
-            <span class="text-[14px] text-gray-700 font-bold">Book Built</span>
-
-            <span>LISTING DATE</span>
-            <span class="text-[14px] text-gray-700 font-bold">2024-01-30</span>
+              <div class="bg-red-50 p-3 rounded-lg flex-1 ml-4">
+                <div class="font-bold text-red-800 flex items-center">
+                  <i class="fa-solid fa-thumbs-down text-red-600 mr-2"></i>
+                  Cons
+                </div>
+                <ul class="list-disc pl-5 mt-2 text-sm text-gray-700">
+                  <li>Potential for listing below issue price</li>
+                  <li>Market volatility can affect performance</li>
+                </ul>
+              </div>
+            </div>
           </div>
+        </div>
 
-          <!-- Buttons -->
-          <div class="mt-6 flex gap-3 justify-start text-[14px]">
-            <button
-              class="bg-white border border-blue-600 text-blue-600 px-3 py-1 rounded-md"
-            >
-              RHP
-            </button>
-            <button class="bg-orange-600 text-white px-3 py-1 rounded-md">
-              DRHP
-            </button>
+        <!-- Accordion 3 -->
+        <div x-data="{ open: false }"
+          class="w-full bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden">
+          <div class="flex justify-between items-center px-5 py-4 cursor-pointer bg-gray-50 accordion-header"
+            @click="open = !open">
+            <p class="font-bold text-lg text-gray-800">
+              What documents are required for IPO application?
+            </p>
+            <span class="text-2xl font-bold transition-transform duration-200">
+              <span class="text-blue-600" x-text="open ? '−' : '+'"></span>
+            </span>
+          </div>
+          <div x-show="open" x-collapse class="px-5 pb-6 pt-2 bg-white accordion-transition"
+            :class="open ? 'max-h-96' : 'max-h-0'">
+            <ul class="list-disc space-y-2 pl-6">
+              <li class="font-medium text-gray-700">
+                PAN card (mandatory for all applicants)
+              </li>
+              <li class="font-medium text-gray-700">
+                Demat account details
+              </li>
+              <li class="font-medium text-gray-700">
+                Bank account linked with your trading account
+              </li>
+              <li class="font-medium text-gray-700">
+                KYC documents (if not already completed)
+              </li>
+            </ul>
+            <div class="mt-4 text-sm text-gray-600">
+              <i class="fa-solid fa-circle-info text-blue-500 mr-2"></i>
+              Note: Some brokers may require additional documents for first-time applicants.
+            </div>
           </div>
         </div>
       </div>
+    </div>
+  </main>
 
-      <div class="mt-16 space-y-6 px-6 md:px-10 max-w-screen-xl mx-auto">
+  <!-- Newsletter Section -->
+  <div class="bg-gradient-to-r from-blue-500 to-indigo-600 py-12 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-2xl font-bold text-white mb-4">Stay Updated on New IPOs</h2>
+      <p class="text-blue-100 mb-6 max-w-2xl mx-auto">
+        Subscribe to our newsletter and get alerts for upcoming IPOs, analysis, and market insights delivered to your
+        inbox.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+        <input type="email" placeholder="Enter your email address"
+          class="px-4 py-3 rounded-lg flex-grow focus:outline-none focus:ring-2 focus:ring-blue-300">
+        <button class="bg-white text-blue-600 px-6 py-3 rounded-lg font-bold btn-hover">
+          Subscribe
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-white text-gray-700 text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <!-- Grid Links Section -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 sm:gap-8 mb-12">
+        <!-- Column 1 -->
         <div>
-          <h1 class="text-2xl font-bold text-black">
-            Frequently Asked Question?
-          </h1>
-          <p class="text-gray-700">
-            Find answers to common questions that come in your mind related to
-            IPO.
+          <h3 class="font-semibold mb-2 text-gray-800">Resources</h3>
+          <ul class="space-y-1">
+            <li><a href="#" class="footer-link">Trading View</a></li>
+            <li><a href="#" class="footer-link">NSE Holidays</a></li>
+            <li><a href="#" class="footer-link">e-Voting CDSL</a></li>
+            <li><a href="#" class="footer-link">e-Voting NSDL</a></li>
+            <li><a href="#" class="footer-link">Market Timings</a></li>
+          </ul>
+        </div>
+        <!-- Column 2 -->
+        <div>
+          <h3 class="font-semibold mb-2 text-gray-800">Company</h3>
+          <ul class="space-y-1">
+            <li><a href="#" class="footer-link">Careers</a></li>
+            <li><a href="#" class="footer-link">Contact Us</a></li>
+            <li><a href="#" class="footer-link">About Us</a></li>
+            <li><a href="#" class="footer-link">Community</a></li>
+            <li><a href="#" class="footer-link">Blogs</a></li>
+          </ul>
+        </div>
+        <!-- Column 3 -->
+        <div>
+          <h3 class="font-semibold mb-2 text-gray-800">Offerings</h3>
+          <ul class="space-y-1">
+            <li><a href="#" class="footer-link">Compare Broker</a></li>
+            <li><a href="#" class="footer-link">Fin Calculators</a></li>
+            <li><a href="#" class="footer-link">IPO</a></li>
+            <li><a href="#" class="footer-link">All Brokers</a></li>
+            <li><a href="#" class="footer-link">Products</a></li>
+          </ul>
+        </div>
+        <!-- Column 4 -->
+        <div>
+          <h3 class="font-semibold mb-2 text-gray-800">Links</h3>
+          <ul class="space-y-1">
+            <li><a href="#" class="footer-link">Shark Investor</a></li>
+            <li><a href="#" class="footer-link">Mutual Funds</a></li>
+            <li><a href="#" class="footer-link">Sitemap</a></li>
+            <li><a href="#" class="footer-link">Indian Indices</a></li>
+            <li><a href="#" class="footer-link">Bug Bounty Program</a></li>
+          </ul>
+        </div>
+        <!-- Column 5 -->
+        <div>
+          <h3 class="font-semibold mb-2 text-gray-800">Policy</h3>
+          <ul class="space-y-1">
+            <li><a href="#" class="footer-link">Terms & Conditions</a></li>
+            <li><a href="#" class="footer-link">Privacy Policy</a></li>
+            <li><a href="#" class="footer-link">Refund Policy</a></li>
+            <li><a href="#" class="footer-link">Disclaimer</a></li>
+            <li><a href="#" class="footer-link">Trust & Security</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Contact + Socials Section -->
+      <div class="flex flex-col lg:flex-row lg:justify-between gap-8 mb-10">
+        <!-- Social and Address -->
+        <div class="space-y-4">
+          <div class="flex space-x-4 text-lg text-blue-600">
+            <a href="#" class="hover:text-blue-800"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" class="hover:text-blue-800"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="hover:text-blue-800"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="hover:text-blue-800"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="hover:text-blue-800"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="hover:text-blue-800"><i class="fab fa-telegram-plane"></i></a>
+          </div>
+          <div>
+            <!-- Updated footer logo to match Bluestock branding -->
+            <div class="flex items-center mb-2">
+              <div class="bg-blue-600 text-white p-1 rounded mr-2">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <span class="font-bold text-gray-800">Bluestock</span>
+            </div>
+            <p class="mt-2 text-gray-700">Bluestock Fintech<br />Pune, Maharashtra</p>
+            <p class="text-xs text-gray-500 mt-1">
+              MSME Reg. No: UDYAM-MH-01-0138001
+            </p>
+          </div>
+        </div>
+
+        <!-- Info Text -->
+        <div class="text-gray-600 text-sm space-y-4 max-w-3xl">
+          <p>
+            Investment in securities markets are subject to market risks, read
+            all the related documents carefully before investing.
+          </p>
+          <p>
+            Contact us:
+            <a href="mailto:hello@bluestock.in" class="text-blue-600 hover:underline">hello@bluestock.in</a>
+            | Tech support:
+            <a href="mailto:cto@bluestock.in" class="text-blue-600 hover:underline">cto@bluestock.in</a>
+          </p>
+          <p>
+            Disclaimer: Bluestock is not a SEBI-registered analyst. We don’t
+            give financial advice; all content is for educational purposes.
           </p>
         </div>
-
-        <!-- Accordions -->
-        <div class="w-full space-y-4">
-          <!-- Accordion 1 -->
-          <div
-            x-data="{ open: false }"
-            class="w-full bg-white rounded-xl shadow-md border border-gray-200"
-          >
-            <div
-              class="flex justify-between items-center px-5 py-4 cursor-pointer"
-              @click="open = !open"
-            >
-              <p class="font-bold text-[20px]">How to Subscribe to an IPO?</p>
-              <span
-                class="text-2xl font-bold text-gray-600 transition-transform duration-200"
-              >
-                <span class="text-blue-600" x-text="open ? '−' : '+'"></span>
-              </span>
-            </div>
-            <div x-show="open" x-collapse class="px-10 pb-6">
-              <ul class="list-disc space-y-2">
-                <li class="font-bold">
-                  Step 1: Login to your respective service provider.
-                </li>
-                <li class="font-bold">Step 2: Click on the IPO button</li>
-                <li class="font-bold">
-                  Step 3: Select the IPO and enter the details
-                </li>
-                <li class="font-bold">
-                  Step 4: Make payment or authorize mandate
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Accordion 2 -->
-          <div
-            x-data="{ open: false }"
-            class="w-full bg-white rounded-xl shadow-md border border-gray-200"
-          >
-            <div
-              class="flex justify-between items-center px-5 py-4 cursor-pointer"
-              @click="open = !open"
-            >
-              <p class="font-bold text-[20px]">
-                Should I buy an IPO first day?
-              </p>
-              <span
-                class="text-2xl font-bold text-gray-600 transition-transform duration-200"
-              >
-                <span class="text-blue-600" x-text="open ? '−' : '+'"></span>
-              </span>
-            </div>
-            <div x-show="open" x-collapse class="px-10 pb-6">
-              <ul class="list-disc space-y-2">
-                <li class="font-bold">
-                  If oversubscribed, IPOs often list at a premium.
-                </li>
-                <li class="font-bold">
-                  IPOs from known, profitable brands perform well.
-                </li>
-                <li class="font-bold">
-                  Always read the DRHP and understand the risks.
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
       </div>
-    </main>
 
-    <footer class="bg-white text-gray-700 text-sm">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <!-- Grid Links Section -->
-        <div
-          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 sm:gap-8 mb-12"
-        >
-          <!-- Column 1 -->
-          <div>
-            <h3 class="font-semibold mb-2">Resources</h3>
-            <ul class="space-y-1">
-              <li><a href="#">Trading View</a></li>
-              <li><a href="#">NSE Holidays</a></li>
-              <li><a href="#">e-Voting CDSL</a></li>
-              <li><a href="#">e-Voting NSDL</a></li>
-              <li><a href="#">Market Timings</a></li>
-            </ul>
-          </div>
-          <!-- Column 2 -->
-          <div>
-            <h3 class="font-semibold mb-2">Company</h3>
-            <ul class="space-y-1">
-              <li><a href="#">Careers</a></li>
-              <li><a href="#">Contact Us</a></li>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Community</a></li>
-              <li><a href="#">Blogs</a></li>
-            </ul>
-          </div>
-          <!-- Column 3 -->
-          <div>
-            <h3 class="font-semibold mb-2">Offerings</h3>
-            <ul class="space-y-1">
-              <li><a href="#">Compare Broker</a></li>
-              <li><a href="#">Fin Calculators</a></li>
-              <li><a href="#">IPO</a></li>
-              <li><a href="#">All Brokers</a></li>
-              <li><a href="#">Products</a></li>
-            </ul>
-          </div>
-          <!-- Column 4 -->
-          <div>
-            <h3 class="font-semibold mb-2">Links</h3>
-            <ul class="space-y-1">
-              <li><a href="#">Shark Investor</a></li>
-              <li><a href="#">Mutual Funds</a></li>
-              <li><a href="#">Sitemap</a></li>
-              <li><a href="#">Indian Indices</a></li>
-              <li><a href="#">Bug Bounty Program</a></li>
-            </ul>
-          </div>
-          <!-- Column 5 -->
-          <div>
-            <h3 class="font-semibold mb-2">Policy</h3>
-            <ul class="space-y-1">
-              <li><a href="#">Terms & Conditions</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Refund Policy</a></li>
-              <li><a href="#">Disclaimer</a></li>
-              <li><a href="#">Trust & Security</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Contact + Socials Section -->
-        <div class="flex flex-col lg:flex-row lg:justify-between gap-8 mb-10">
-          <!-- Social and Address -->
-          <div class="space-y-4">
-            <div class="flex space-x-4 text-lg text-blue-600">
-              <a href="#"><i class="fab fa-x-twitter"></i></a>
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-              <a href="#"><i class="fab fa-youtube"></i></a>
-              <a href="#"><i class="fab fa-telegram-plane"></i></a>
-            </div>
-            <div>
-              <img src="./img/logo.png" alt="Bluestock Logo" class="h-6" />
-              <p class="mt-2">Bluestock Fintech<br />Pune, Maharashtra</p>
-              <p class="text-xs text-gray-500 mt-1">
-                MSME Reg. No: UDYAM-MH-01-0138001
-              </p>
-              <img
-                src="./img/Screenshot 2025-05-21 005936.png"
-                alt="Startup India"
-                class="mt-2"
-                style="height: 80px"
-              />
-            </div>
-          </div>
-
-          <!-- Info Text -->
-          <div class="text-gray-600 text-sm space-y-4 max-w-3xl">
-            <p>
-              Investment in securities markets are subject to market risks, read
-              all the related documents carefully before investing.
-            </p>
-            <p>
-              Contact us:
-              <a href="mailto:hello@bluestock.in" class="text-blue-600"
-                >hello@bluestock.in</a
-              >
-              | Tech support:
-              <a href="mailto:cto@bluestock.in" class="text-blue-600"
-                >cto@bluestock.in</a
-              >
-            </p>
-            <p>
-              Disclaimer: Bluestock is not a SEBI-registered analyst. We don’t
-              give financial advice; all content is for educational purposes.
-            </p>
-          </div>
-        </div>
-
-        <!-- Footer Bottom -->
-        <div
-          class="border-t pt-4 flex flex-col sm:flex-row justify-between text-xs text-gray-500 text-center sm:text-left"
-        >
-          <p>&copy; Bluestock Fintech. All Rights Reserved.</p>
-          <p class="mt-2 sm:mt-0">Made with ❤️ in Pune, Maharashtra</p>
-        </div>
+      <!-- Footer Bottom -->
+      <div
+        class="border-t border-gray-300 pt-4 flex flex-col sm:flex-row justify-between text-xs text-gray-500 text-center sm:text-left">
+        <p>&copy; 2024 Bluestock Fintech. All Rights Reserved.</p>
+        <p class="mt-2 sm:mt-0">Made with <i class="fa-solid fa-heart text-red-500"></i> in Pune, Maharashtra</p>
       </div>
-    </footer>
+    </div>
+  </footer>
 
-    <!-- Font Awesome CDN -->
-    <script
-      src="https://kit.fontawesome.com/a076d05399.js"
-      crossorigin="anonymous"
-    ></script>
+  <!-- JS for Toggle -->
+  <script>
+    // Mobile menu toggle functionality
+    document.addEventListener('alpine:init', () => {
+      Alpine.data('mobileMenu', () => ({
+        open: false,
+        toggle() {
+          this.open = !this.open;
+        }
+      }));
+    });
+  </script>
+</body>
 
-    <!-- JS for Toggle -->
-    <script>
-      const toggleBtn = document.getElementById("toggle-btn");
-      const mobileMenu = document.getElementById("mobile-menu");
-
-      toggleBtn.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-      });
-    </script>
-  </body>
 </html>
