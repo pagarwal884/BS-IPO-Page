@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IPO Dashboard | Bluestock Fintech</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="upcoming.css">
+</head>
+
+<body>
+  <div class="sidebar">
+    <div class="logo-container">
+      <div class="logo">B</div>
+      <div>
+        <div class="company-name">Bluestock Fintech</div>
+        <div class="company-tagline">Investment Solutions</div>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">MENU</div>
+      <ul class="sidebar-menu">
+        <li>
+          <a href="#" class="active">
+            <i class="fas fa-th-large"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-chart-line"></i>
+            <span>Manage IPO</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-calendar-alt"></i>
+            <span>IPO Subscription</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-file-contract"></i>
+            <span>IPO Allotment</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-title">OTHERS</div>
+      <ul class="sidebar-menu">
+        <li>
+          <a href="#">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-code"></i>
+            <span>API Manager</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-user-circle"></i>
+            <span>Accounts</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-question-circle"></i>
+            <span>Help</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="header">
+      <div class="search-bar">
+        <i class="fas fa-search"></i>
+        <input type="text" id="search-input" placeholder="Search IPO, company, status..." />
+      </div>
+      <div class="user-info">
+        <div class="avatar">V</div>
+        <div class="welcome-text">Hi, Vishal</div>
+        <div class="notifications">
+          <i class="fas fa-bell"></i>
+          <div class="notification-badge">2</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-header">
+      <h1 class="dashboard-title">Upcoming IPO Dashboard</h1>
+      <button class="register-btn" id="open-register-modal">
+        <i class="fas fa-plus"></i> Register New IPO
+      </button>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="stats-container">
+      <div class="stat-card">
+        <div class="stat-icon blue">
+          <i class="fas fa-building"></i>
+        </div>
+        <div class="stat-info">
+          <h3>24</h3>
+          <p>Total IPOs</p>
+          <div class="stat-trend trend-up">
+            <i class="fas fa-arrow-up"></i> 12% from last month
+          </div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon green">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <div class="stat-info">
+          <h3>8</h3>
+          <p>Ongoing IPOs</p>
+          <div class="stat-trend trend-up">
+            <i class="fas fa-arrow-up"></i> 2 this week
+          </div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon orange">
+          <i class="fas fa-clock"></i>
+        </div>
+        <div class="stat-info">
+          <h3>12</h3>
+          <p>Upcoming IPOs</p>
+          <div class="stat-trend trend-down">
+            <i class="fas fa-arrow-down"></i> 3 delayed
+          </div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon red">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="stat-info">
+          <h3>4</h3>
+          <p>Recently Listed</p>
+          <div class="stat-trend trend-up">
+            <i class="fas fa-arrow-up"></i> 100% success
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter Section -->
+    <div class="filter-section">
+      <div class="filter-group">
+        <span class="filter-label">Status:</span>
+        <select class="filter-select" id="status-filter">
+          <option value="all">All Status</option>
+          <option value="Ongoing">Ongoing</option>
+          <option value="Upcoming">Upcoming</option>
+          <option value="New Listed">New Listed</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-label">Sort By:</span>
+        <select class="filter-select" id="sort-by">
+          <option value="company">Company Name</option>
+          <option value="openDate">Open Date</option>
+          <option value="closeDate">Close Date</option>
+          <option value="listingDate">Listing Date</option>
+          <option value="issueSize">Issue Size</option>
+        </select>
+      </div>
+
+      <button class="reset-btn" id="reset-filters">
+        <i class="fas fa-sync-alt"></i> Reset Filters
+      </button>
+    </div>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th data-sort="company">Company</th>
+            <th data-sort="priceMin">Price Band</th>
+            <th data-sort="openDate">Open</th>
+            <th data-sort="closeDate">Close</th>
+            <th data-sort="issueSize">Issue Size</th>
+            <th>Issue Type</th>
+            <th data-sort="listingDate">Listing Date</th>
+            <th>Status</th>
+            <th>Action</th>
+            <th>Options</th>
+          </tr>
+        </thead>
+        <tbody id="ipo-table-body">
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pagination" id="pagination-container">
+      <button id="prev-btn" disabled>
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="active">1</button>
+      <button>2</button>
+      <div class="ellipsis">...</div>
+      <button>9</button>
+      <button>10</button>
+      <button id="next-btn">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Register IPO Modal -->
+  <div class="modal" id="register-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title">Register New IPO</div>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ipo-company">Company Name</label>
+            <input type="text" id="ipo-company" class="form-control" placeholder="Enter company name">
+          </div>
+          <div class="form-group">
+            <label for="ipo-price-min">Min Price (₹)</label>
+            <input type="number" id="ipo-price-min" class="form-control" placeholder="Min price">
+          </div>
+          <div class="form-group">
+            <label for="ipo-price-max">Max Price (₹)</label>
+            <input type="number" id="ipo-price-max" class="form-control" placeholder="Max price">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ipo-open">Open Date</label>
+            <input type="date" id="ipo-open" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="ipo-close">Close Date</label>
+            <input type="date" id="ipo-close" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="ipo-listing">Listing Date</label>
+            <input type="date" id="ipo-listing" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ipo-size">Issue Size (Cr.)</label>
+            <input type="text" id="ipo-size" class="form-control" placeholder="Enter issue size">
+          </div>
+          <div class="form-group">
+            <label for="ipo-type">Issue Type</label>
+            <select id="ipo-type" class="form-control">
+              <option value="Book Built">Book Built</option>
+              <option value="Fixed Price">Fixed Price</option>
+              <option value="Hybrid">Hybrid</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ipo-status">Status</label>
+            <select id="ipo-status" class="form-control">
+              <option value="Ongoing">Ongoing</option>
+              <option value="Comming">Comming</option>
+              <option value="New Listed">New Listed</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary close-modal">Cancel</button>
+        <button class="btn btn-primary" id="submit-ipo">Register IPO</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toast-message">IPO registered successfully!</span>
+  </div>
+  <script src="upcoming.js"></script>
+</body>
+
+</html>
