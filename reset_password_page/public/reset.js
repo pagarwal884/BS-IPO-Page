@@ -9,6 +9,7 @@ document
     const loading = document.getElementById("loading");
     const successMessage = document.getElementById("successMessage");
     const errorMessage = document.getElementById("errorMessage");
+    const errorText = document.getElementById("errorText");
 
     // Hide previous messages
     successMessage.style.display = "none";
@@ -16,40 +17,31 @@ document
 
     // Validate email
     if (!email || !isValidEmail(email)) {
-      showError("Please enter a valid email address.");
+      errorText.textContent = "Please enter a valid email address.";
+      errorMessage.style.display = "flex";
       return;
     }
 
     // Show loading state
     resetBtn.disabled = true;
-    btnText.style.display = "none";
-    loading.style.display = "inline-block";
+    btnText.style.visibility = "hidden";
+    loading.style.display = "block";
 
+    // Simulate API request
     try {
-      // Send request to backend
-      const response = await fetch("/api/forgot-password", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email: email }),
-      });
+      // This would be a real fetch request in production
+      await new Promise((resolve) => setTimeout(resolve, 1500));
 
-      const data = await response.json();
-
-      if (response.ok) {
-        showSuccess("Password reset link has been sent to your email address.");
-        document.getElementById("email").value = "";
-      } else {
-        showError(data.message || "An error occurred. Please try again.");
-      }
+      // Simulate success response
+      successMessage.style.display = "flex";
+      document.getElementById("email").value = "";
     } catch (error) {
-      console.error("Error:", error);
-      showError("Network error. Please check your connection and try again.");
+      errorText.textContent = "An error occurred. Please try again.";
+      errorMessage.style.display = "flex";
     } finally {
       // Reset button state
       resetBtn.disabled = false;
-      btnText.style.display = "inline";
+      btnText.style.visibility = "visible";
       loading.style.display = "none";
     }
   });
@@ -59,24 +51,12 @@ function isValidEmail(email) {
   return emailRegex.test(email);
 }
 
-function showSuccess(message) {
-  const successMessage = document.getElementById("successMessage");
-  successMessage.textContent = message;
-  successMessage.style.display = "block";
-}
-
-function showError(message) {
-  const errorMessage = document.getElementById("errorMessage");
-  errorMessage.textContent = message;
-  errorMessage.style.display = "block";
-}
-
 function goBack() {
-  // Redirect to login page or go back in history
-  window.history.back();
+  // In a real app, this would redirect to the login page
+  alert("Redirecting to login page...");
 }
 
-// Add some interactive effects
+// Add interactive effects
 document.getElementById("email").addEventListener("input", function () {
   const successMessage = document.getElementById("successMessage");
   const errorMessage = document.getElementById("errorMessage");

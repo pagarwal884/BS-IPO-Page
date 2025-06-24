@@ -5,44 +5,58 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Forgot Password - Bluestock</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="reset.css">
 </head>
 
 <body>
   <div class="container">
     <div class="logo">
+      <div class="logo-icon">
+        <img src="./logo.png" alt="Logo">
+      </div>
       <div class="logo-text">BLUESTOCK</div>
     </div>
 
     <h1>Forgot Password?</h1>
     <p class="subtitle">
-      Enter your email address to get the password reset link.
+      Enter your email address and we'll send you a link to reset your password.
     </p>
 
-    <div class="success-message" id="successMessage">
-      Password reset link has been sent to your email address.
+    <div class="message success-message" id="successMessage">
+      <i class="fas fa-check-circle"></i>
+      <div>Password reset link has been sent to your email address. Please check your inbox.</div>
     </div>
 
-    <div class="error-message" id="errorMessage">
-      Please enter a valid email address.
+    <div class="message error-message" id="errorMessage">
+      <i class="fas fa-exclamation-circle"></i>
+      <div id="errorText">Please enter a valid email address.</div>
     </div>
 
     <form id="resetForm">
       <div class="form-group">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" placeholder="hello@bluestock.in" required />
+        <label for="email">
+          <i class="fas fa-envelope"></i> Email Address
+        </label>
+        <i class="fas fa-at input-icon"></i>
+        <input type="email" id="email" name="email" placeholder="hello@bluestock.in" required autocomplete="email" />
       </div>
 
       <button type="submit" class="reset-btn" id="resetBtn">
-        <span id="btnText">Password Reset</span>
+        <span id="btnText">Reset Password</span>
         <span class="loading" id="loading" style="display: none"></span>
       </button>
     </form>
 
-    <a href="#" class="back-link" onclick="goBack()">Back to login</a>
-  </div>
+    <a href="#" class="back-link" onclick="goBack()">
+      <i class="fas fa-arrow-left"></i> Back to login
+    </a>
 
-  
+    <div class="form-footer">
+      Need help? Contact <a href="mailto:support@bluestock.in">support@bluestock.in</a>
+    </div>
+  </div>
+  <script src="./reset.js"></script>
 </body>
 
 </html>
