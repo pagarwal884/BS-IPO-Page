@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern IPO Dashboard | Bluestock Fintech</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="Dashboard.css">
+</head>
+
+<body class="min-h-screen flex">
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" id="darkModeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Sidebar -->
+    <aside class="sidebar w-64 p-6 hidden md:block"
+        style="background: linear-gradient(180deg, #0a3d62 0%, #0a2d4a 100%); color: white; box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);">
+        <div class="flex items-center mb-8">
+            <div
+                class="logo-circle bg-gradient-to-br from-blue-500 to-indigo-700 w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-2xl mr-3 glow floating">
+                B</div>
+            <div>
+                <div class="text-2xl font-bold text-white">Bluestock Fintech</div>
+                <div class="text-xs text-blue-200">Investment Solutions</div>
+            </div>
+        </div>
+
+        <div class="mb-6">
+            <div class="text-xs text-blue-300 uppercase tracking-wider mb-3">Menu</div>
+            <ul class="space-y-2">
+                <li>
+                    <a href="#" class="sidebar-item active">
+                        <i class="fas fa-th-large mr-3 text-lg"></i>
+                        <span class="text-base">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="sidebar-item">
+                        <i class="fas fa-shopping-cart mr-3 text-lg"></i>
+                        <span class="text-base">Manage IPO</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="sidebar-item">
+                        <i class="fas fa-file-alt mr-3 text-lg"></i>
+                        <span class="text-base">IPO Subscription</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="sidebar-item">
+                        <i class="fas fa-file-invoice mr-3 text-lg"></i>
+                        <span class="text-base">IPO Allotment</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div>
+            <div class="text-xs text-blue-300 uppercase tracking-wider mb-3">Others</div>
+            <ul class="space-y-2">
+                <li>
+                    <a href="#" class="sidebar-item">
+                        <i class="fas fa-cog mr-3 text-lg"></i>
+                        <span class="text-base">Settings</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="sidebar-item">
+                        <i class="fas fa-network-wired mr-3 text-lg"></i>
+                        <span class="text-base">API Manager</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="sidebar-item">
+                        <i class="fas fa-user mr-3 text-lg"></i>
+                        <span class="text-base">Accounts</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="sidebar-item">
+                        <i class="fas fa-question-circle mr-3 text-lg"></i>
+                        <span class="text-base">Help</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="bg-white shadow-sm py-4 px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div class="relative w-full md:w-80">
+                    <input type="text" id="searchInput" placeholder="Search IPO, companies..."
+                        class="search-input w-full">
+                    <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                    <div id="searchSuggestions" class="search-suggestions"></div>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <div class="relative">
+                        <i id="notificationIcon" class="far fa-bell text-gray-600 text-xl cursor-pointer"></i>
+                        <div class="notification-badge">2</div>
+                        <div id="notificationDropdown" class="notification-dropdown">
+                            <div class="notification-header">Notifications</div>
+                            <div class="notification-item unread">
+                                <div class="font-medium">New IPO Alert</div>
+                                <div>Paytm IPO is now open for subscription</div>
+                                <div class="notification-time">10 minutes ago</div>
+                            </div>
+                            <div class="notification-item">
+                                <div class="font-medium">Portfolio Update</div>
+                                <div>Your portfolio value increased by 2.5% today</div>
+                                <div class="notification-time">2 hours ago</div>
+                            </div>
+                            <div class="notification-item">
+                                <div class="font-medium">Market News</div>
+                                <div>Sensex crosses 70,000 mark for the first time</div>
+                                <div class="notification-time">5 hours ago</div>
+                            </div>
+                            <div class="notification-item">
+                                <div class="font-medium">System Update</div>
+                                <div>Scheduled maintenance this Saturday at 2 AM</div>
+                                <div class="notification-time">Yesterday</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="user-circle">V</div>
+                        <div>
+                            <span class="font-semibold text-base">Hi, Vishal</span>
+                            <div class="text-xs text-gray-500">Admin</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="flex-1 p-6 bg-gradient-to-br from-blue-50 to-indigo-50">
+            <div class="mb-6">
+                <h1 class="main-title text-3xl font-bold text-gray-800 flex items-center">
+                    IPO Dashboard
+                    <span class="ml-3 bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="fas fa-sync-alt mr-1"></i> Real-time
+                    </span>
+                </h1>
+                <p class="text-gray-600 mt-2">Track and analyze IPO performance in real-time</p>
+            </div>
+
+            <!-- Dashboard Cards -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                <!-- Card 1: Stats with horizontal circles -->
+                <div class="card p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-bold text-gray-800">IPO Dashboard India</h3>
+                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-sm font-medium">
+                            <i class="fas fa-arrow-up mr-1"></i> 66.6%
+                        </span>
+                    </div>
+                    <p class="text-green-600 mb-4 font-medium">+ 20 IPO in Gain</p>
+
+                    <!-- Horizontal circle design -->
+                    <div class="ipo-stats-container">
+                        <!-- Total IPO -->
+                        <div class="circle circle-main w-40 h-40 floating" id="totalIpoCircle">
+                            <span class="circle-text text-3xl font-bold">30</span>
+                            <span class="circle-subtext">Total IPO</span>
+                        </div>
+
+                        <!-- Gain -->
+                        <div class="circle circle-gain w-32 h-32 pulse" id="gainIpoCircle">
+                            <span class="circle-text text-2xl font-bold">20</span>
+                            <span class="circle-subtext">Gain</span>
+                        </div>
+
+                        <!-- Loss -->
+                        <div class="circle circle-loss w-32 h-32" id="lossIpoCircle">
+                            <span class="circle-text text-2xl font-bold">9</span>
+                            <span class="circle-subtext">Loss</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <div class="flex justify-between text-sm text-gray-600 mb-1">
+                            <span>Gain Performance</span>
+                            <span>66.6%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill bg-gradient-to-r from-green-400 to-green-600"
+                                style="width: 66.6%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Quick Links -->
+                <div class="card p-6">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Quick Links</h3>
+                    <p class="text-gray-500 mb-4">Important resources for IPO tracking</p>
+                    <ul class="divide-y divide-gray-200">
+                        <li class="flex justify-between items-center py-3">
+                            <div class="flex items-center">
+                                <div class="bg-blue-100 p-3 rounded-xl mr-3">
+                                    <i class="fas fa-chart-line text-blue-600 text-lg"></i>
+                                </div>
+                                <span class="font-medium">NSE India</span>
+                            </div>
+                            <a class="btn-primary px-4 py-2 text-sm" href="https://www.nseindia.com" target="_blank">
+                                Visit <i class="fas fa-external-link-alt ml-1"></i>
+                            </a>
+                        </li>
+                        <li class="flex justify-between items-center py-3">
+                            <div class="flex items-center">
+                                <div class="bg-green-100 p-3 rounded-xl mr-3">
+                                    <i class="fas fa-building text-green-600 text-lg"></i>
+                                </div>
+                                <span class="font-medium">BSE India</span>
+                            </div>
+                            <a class="btn-primary px-4 py-2 text-sm" href="https://www.bseindia.com" target="_blank">
+                                Visit <i class="fas fa-external-link-alt ml-1"></i>
+                            </a>
+                        </li>
+                        <li class="flex justify-between items-center py-3">
+                            <div class="flex items-center">
+                                <div class="bg-yellow-100 p-3 rounded-xl mr-3">
+                                    <i class="fas fa-balance-scale text-yellow-600 text-lg"></i>
+                                </div>
+                                <span class="font-medium">SEBI</span>
+                            </div>
+                            <a class="btn-primary px-4 py-2 text-sm" href="https://www.sebi.gov.in" target="_blank">
+                                Visit <i class="fas fa-external-link-alt ml-1"></i>
+                            </a>
+                        </li>
+                        <li class="flex justify-between items-center py-3">
+                            <div class="flex items-center">
+                                <div class="bg-red-100 p-3 rounded-xl mr-3">
+                                    <i class="fas fa-coins text-red-600 text-lg"></i>
+                                </div>
+                                <span class="font-medium">Money Control</span>
+                            </div>
+                            <a class="btn-primary px-4 py-2 text-sm" href="https://www.moneycontrol.com"
+                                target="_blank">
+                                Visit <i class="fas fa-external-link-alt ml-1"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Card 3: Chart -->
+                <div class="card p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-800">Main Board IPO</h3>
+                            <p class="text-gray-500">From 01 Jan 2024 to present</p>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button class="bg-gray-200 hover:bg-gray-300 p-2 rounded-xl">
+                                <i class="fas fa-download text-gray-700"></i>
+                            </button>
+                            <button class="bg-gray-200 hover:bg-gray-300 p-2 rounded-xl">
+                                <i class="fas fa-expand text-gray-700"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="ipoChart"></canvas>
+                    </div>
+                    <button id="viewReportBtn" class="btn-primary w-full mt-4">
+                        <i class="fas fa-file-alt mr-2"></i> View Full Report
+                    </button>
+                </div>
+            </div>
+
+            <!-- Recent IPO Activity -->
+            <div class="card p-6 mb-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-bold text-gray-800">Recent IPO Activity</h3>
+                    <button class="btn-primary px-4 py-2" id="addIpoBtn">
+                        <i class="fas fa-plus mr-1"></i> Add New IPO
+                    </button>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Company</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Price Band</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Status</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Listing Gain</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Current Return</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200" id="ipoTableBody">
+                            <!-- IPO data will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Performance Metrics -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="card p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-bold text-gray-800">IPO Performance by Sector</h3>
+                        <select id="sectorFilter"
+                            class="border border-gray-300 rounded-lg px-3 py-1 text-sm focus:outline-none focus:border-indigo-500">
+                            <option>Last 30 Days</option>
+                            <option>Last 90 Days</option>
+                            <option>Year to Date</option>
+                        </select>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="sectorChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-bold text-gray-800">Top Performing IPOs</h3>
+                        <button id="refreshTopIpoBtn" class="text-indigo-600 hover:text-indigo-800 font-medium">
+                            <i class="fas fa-sync-alt mr-1"></i> Refresh
+                        </button>
+                    </div>
+                    <div class="space-y-4" id="topIpoList">
+                        <!-- Top IPO data will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toast-message">IPO report generated successfully!</span>
+    </div>
+    <script src="Dashboard.js"></script>
+</body>
+
+</html>
